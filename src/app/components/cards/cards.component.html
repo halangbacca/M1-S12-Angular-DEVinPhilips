@@ -1,0 +1,54 @@
+<h4>Estatísticas do Sistema</h4>
+<div class="card-group">
+  <div class="card">
+    <img src="/assets/img/people.png" class="card-img-top" alt="Pacientes" />
+    <div class="card-body">
+      <h5 class="card-title">{{ qtdPatients }}</h5>
+      <p class="card-text">Pacientes</p>
+    </div>
+  </div>
+  <div class="card">
+    <img
+      src="/assets/img/med-appointment.png"
+      class="card-img-top"
+      alt="Consultas"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ qtdAppointments }}</h5>
+      <p class="card-text">Consultas</p>
+    </div>
+  </div>
+  <div class="card">
+    <img
+      src="/assets/img/medical-report.png"
+      class="card-img-top"
+      alt="Exames"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ qtdExams }}</h5>
+      <p class="card-text">Exames</p>
+    </div>
+  </div>
+</div>
+
+<h4>Informações rápidas de pacientes</h4>
+<div class="patient-card">
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div class="col" *ngFor="let patient of cards">
+      <div class="card patient">
+        <img
+          src="assets/img/patient.png"
+          class="card-img-top"
+          alt="Foto do paciente"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ patient.identification.name }}</h5>
+          <p class="card-text">{{ patient.identification.birth}}</p>
+          <h6>{{ patient.identification.phone }}</h6>
+          <h6>{{ patient.insurance.name }}</h6>
+          <p>Ver mais</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

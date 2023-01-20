@@ -1,0 +1,54 @@
+<header class="py-3 mb-3 border-bottom">
+  <div
+    class="container-fluid d-grid gap-1 align-items-center"
+    style="grid-template-columns: 1fr 5fr"
+  >
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="#">
+          <img
+            src="/assets/img/logo-black.png"
+            alt="Logo do LABMedical"
+            width="50"
+            height="40"
+            class="d-inline-block align-text-center"
+          />
+          LABMedical
+        </a>
+      </div>
+    </nav>
+
+    <div class="d-flex align-items-center">
+      <form class="w-100 me-5" role="search">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Digite o nome do paciente"
+          aria-label="Search"
+        />
+      </form>
+
+      <strong class="doctor">Nome do Médico</strong>
+      <div class="flex-shrink-0 dropdown">
+        <a
+          href="#"
+          class="d-block link-dark text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="assets/img/patient.png"
+            alt="user"
+            width="32"
+            height="32"
+            class="rounded-circle"
+          />
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" routerLink="/login">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

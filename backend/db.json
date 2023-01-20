@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "email@exemplo.com",
+      "password": "123455678"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "identification": {
+        "name": "Halan Germano Bacca",
+        "gender": "Masculino",
+        "birth": "21/07/1998",
+        "age": "24",
+        "cpf": "111.111.111-11",
+        "rg": "1111111",
+        "relationship": "Solteiro",
+        "phone": "(47) 99720-0499",
+        "email": "email@example.com",
+        "nationality": "Brasileira",
+        "allergy": "AAS",
+        "emergencyContact": "(XX) XXXXX-XXXX"
+      },
+      "insurance": {
+        "name": "SUS",
+        "number": "1111111",
+        "validity": "11/11/2030"
+      },
+      "address": {
+        "cep": "SUS",
+        "city": "cidade",
+        "state": "11/11/2030",
+        "street": "rua",
+        "number": "111",
+        "complement": "complemento",
+        "neighborhood": "bairro",
+        "reference": "referência"
+      }
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "name": "nome do exame",
+      "date": "11/11/2023",
+      "time": "00:00",
+      "type": "tipo de exame",
+      "lab": "laboratório",
+      "url": "url",
+      "result": "resultado"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "motive": "qqqqqqqqqqqqqqq",
+      "date": "2023-01-16",
+      "time": "20:56",
+      "description": "ssssssssssssssssssssss",
+      "medication": "sssssssssss",
+      "precautions": "ssssssssss"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-md-7 col-lg-8">
+    <h4 class="mb-3">Listagem de Prontuários</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Registro</th>
+          <th scope="col">Nome do paciente</th>
+          <th scope="col">Convênio</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let patient of workflow">
+        <tr>
+          <th scope="row">{{ patient.id }}</th>
+          <td>{{ patient.identification.name }}</td>
+          <td>{{ patient.insurance.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
