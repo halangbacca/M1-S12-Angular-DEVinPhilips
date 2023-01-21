@@ -1,3 +1,4 @@
+import { CepService } from './../cep.service';
 import { PatientsService } from './../patients.service';
 import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
@@ -41,7 +42,11 @@ export class PatientRegistrationComponent implements OnInit {
     },
   };
 
-  constructor(private service: PatientsService, private router: Router) {}
+  constructor(
+    private service: PatientsService,
+    private router: Router,
+    private cep: CepService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -50,16 +55,5 @@ export class PatientRegistrationComponent implements OnInit {
       alert('Paciente cadastrado com sucesso');
       this.router.navigate(['/appointment-registration']);
     });
-  }
-
-  editPatient() {}
-
-  deletePatient() {
-    if (this.patient.id) {
-      this.service.deletePatient(this.patient.id).subscribe(() => {
-        alert('Paciente deletado com sucesso');
-        this.router.navigate(['/']);
-      });
-    }
   }
 }

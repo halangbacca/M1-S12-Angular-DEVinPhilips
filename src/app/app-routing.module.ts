@@ -1,3 +1,4 @@
+import { PatientActionsComponent } from './components/patient-actions/patient-actions.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { PatientWorkflowComponent } from './components/patient-workflow/patient-workflow.component';
 import { AppointmentWorkflowComponent } from './components/appointment-workflow/appointment-workflow.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'appointment-registration', component: AppointmentRegistrationComponent },
   { path: 'appointment-workflow', component: AppointmentWorkflowComponent },
   { path: 'patient-workflow', component: PatientWorkflowComponent },
+  { path: 'patient-actions/:id', component: PatientActionsComponent },
 ];
 
 @NgModule({

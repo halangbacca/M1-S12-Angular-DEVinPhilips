@@ -20,7 +20,7 @@ export class PatientsService {
   listUsers(): Observable<Users[]> {
     return this.http.get<Users[]>(this.usersUrl);
   }
-  
+
   listPatients(): Observable<Patients[]> {
     return this.http.get<Patients[]>(this.patientsUrl);
   }
@@ -40,6 +40,11 @@ export class PatientsService {
   deletePatient(id: number): Observable<Patients> {
     const url = `${this.patientsUrl}/${id}`;
     return this.http.delete<Patients>(url);
+  }
+
+  editPatient(patient: Patients): Observable<Patients> {
+    const url = `${this.patientsUrl}/${patient.id}`;
+    return this.http.put<Patients>(url, patient);
   }
 
   searchById(id: number): Observable<Patients> {

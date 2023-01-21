@@ -51,3 +51,12 @@ h4 {
   bottom: 450px;
   text-align: center;
 }
+
+.noPatients {
+  margin-top: 20px;
+  position: relative;
+  width: 50%;
+  left: 450px;
+  bottom: 450px;
+  text-align: center;
+}

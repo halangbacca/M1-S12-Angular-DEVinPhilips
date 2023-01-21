@@ -13,7 +13,13 @@ h4 {
   text-align: left;
 }
 
-tbody th,
-tbody td {
-  cursor: pointer;
+.container label {
+  font-weight: 500;
+}
+
+button {
+  position: relative;
+  left: 233px;
+  margin-right: 10px;
+  margin-top: 20px;
 }

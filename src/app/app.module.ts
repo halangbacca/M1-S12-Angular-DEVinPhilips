@@ -16,6 +16,7 @@ import { CardsComponent } from './components/cards/cards.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AgePipe } from './components/age.pipe';
+import { PatientActionsComponent } from './components/patient-actions/patient-actions.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AgePipe } from './components/age.pipe';
     PatientWorkflowComponent,
     CardsComponent,
     AgePipe,
+    PatientActionsComponent,
   ],
   imports: [
     BrowserModule,

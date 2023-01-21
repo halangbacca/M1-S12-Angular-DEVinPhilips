@@ -9,7 +9,10 @@
           <th scope="col">Convênio</th>
         </tr>
       </thead>
-      <tbody *ngFor="let patient of workflow">
+      <tbody
+        *ngFor="let patient of workflow"
+        routerLink="/patient-actions/{{ patient.id }}"
+      >
         <tr>
           <th scope="row">{{ patient.id }}</th>
           <td>{{ patient.identification.name }}</td>
