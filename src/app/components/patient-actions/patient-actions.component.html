@@ -218,6 +218,7 @@
             name="cep"
             placeholder="Digite o CEP do paciente"
             required
+            (blur)="consultCep(applyFilter($event))"
             [(ngModel)]="patient.address.cep"
           />
         </div>

@@ -1,3 +1,4 @@
+import { CepService } from './../cep.service';
 import { PatientsService } from './../patients.service';
 import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
@@ -53,9 +54,30 @@ export class PatientRegistrationComponent implements OnInit {
     appointments: [],
   };
 
-  constructor(private service: PatientsService, private router: Router) {}
+  constructor(
+    private service: PatientsService,
+    private router: Router,
+    private cep: CepService
+  ) {}
 
   ngOnInit(): void {}
+
+  consultCep(value: any) {
+    this.cep.search(value).subscribe((data) => this.populateForm(data));
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    return filterValue;
+  }
+
+  populateForm(data: any) {
+    (this.patient.address.cep = data.cep),
+      (this.patient.address.street = data.logradouro),
+      (this.patient.address.neighborhood = data.bairro),
+      (this.patient.address.city = data.localidade),
+      (this.patient.address.state = data.uf);
+  }
 
   createPatient() {
     if (this.patient.identification.name === '') {
@@ -217,6 +239,46 @@ export class PatientRegistrationComponent implements OnInit {
         icon: 'error',
         title: 'CEP',
         text: 'Insira o CEP da sua rua!',
+      });
+      return;
+    }
+    if (this.patient.address.city === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Cidade',
+        text: 'Insira o nome da sua cidade!',
+      });
+      return;
+    }
+    if (this.patient.address.state === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Estado',
+        text: 'Insira o estado de residência!',
+      });
+      return;
+    }
+    if (this.patient.address.street === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Logradouro',
+        text: 'Insira o nome da sua rua!',
+      });
+      return;
+    }
+    if (this.patient.address.number === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Número da casa',
+        text: 'Insira o número da sua casa!',
+      });
+      return;
+    }
+    if (this.patient.address.neighborhood === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Bairro',
+        text: 'Insira o nome do seu bairro!',
       });
       return;
     }

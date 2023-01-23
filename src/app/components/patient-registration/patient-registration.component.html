@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-md-7 col-lg-8">
     <h4 class="mb-3">Identificação</h4>
-    <form class="needs-validation" novalidate="">
+    <form class="needs-validation" novalidate>
       <div class="row g-3">
         <div class="col-sm-12">
           <label for="name" class="form-label needs-validation" novalidate
@@ -205,6 +205,7 @@
             id="cep"
             name="cep"
             placeholder="Digite o CEP do paciente"
+            (blur)="consultCep(applyFilter($event))"
             [(ngModel)]="patient.address.cep"
           />
         </div>
@@ -270,12 +271,12 @@
         </div>
 
         <div class="col-sm-6">
-          <label for="district" class="form-label">Bairro:</label>
+          <label for="neighborhood" class="form-label">Bairro:</label>
           <input
             type="text"
             class="form-control"
-            id="district"
-            name="district"
+            id="neighborhood"
+            name="neighborhood"
             placeholder="Digite o bairro de residência do paciente"
             [(ngModel)]="patient.address.neighborhood"
           />
