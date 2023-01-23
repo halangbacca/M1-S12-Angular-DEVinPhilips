@@ -9,47 +9,14 @@
   ],
   "patients": [
     {
-      "id": 1,
       "identification": {
         "name": "Halan Germano Bacca",
         "gender": "Homem cisgênero",
         "birth": "1998-07-21",
-        "cpf": "111-111-111-11",
-        "rg": "1111111",
-        "relationship": "Solteiro(a)",
-        "phone": "(11)11111-1111",
-        "email": "halan@dominio.com",
-        "nationality": "Itajaiense",
-        "allergy": "AAS",
-        "emergencyContact": "(11)1111-1111"
-      },
-      "insurance": {
-        "name": "SUS",
-        "number": "123456789",
-        "validity": "10/05/2025"
-      },
-      "address": {
-        "cep": "88309000",
-        "city": "Itajaí",
-        "state": "SC",
-        "street": "São Joaquim",
-        "number": 137,
-        "complement": "Casa",
-        "neighborhood": "São Vicente",
-        "reference": "Em frente ao Auto Peças Edvaldo"
-      },
-      "exams": [],
-      "appointments": []
-    },
-    {
-      "identification": {
-        "name": "Luciana sssd",
-        "gender": "",
-        "birth": "",
         "cpf": "",
         "rg": "",
-        "relationship": "",
-        "phone": "",
+        "relationship": "Solteiro(a)",
+        "phone": "(47)99720-0499",
         "email": "",
         "nationality": "",
         "allergy": "",
@@ -83,7 +50,7 @@
       ],
       "appointments": [
         {
-          "motive": "",
+          "motive": "dddddddddddd",
           "date": "",
           "time": "",
           "description": "",
@@ -92,110 +59,6 @@
         }
       ],
       "id": 2
-    },
-    {
-      "identification": {
-        "name": "",
-        "gender": "",
-        "birth": "",
-        "cpf": "",
-        "rg": "",
-        "relationship": "",
-        "phone": "",
-        "email": "",
-        "nationality": "",
-        "allergy": "",
-        "emergencyContact": ""
-      },
-      "insurance": {
-        "name": "",
-        "number": "",
-        "validity": ""
-      },
-      "address": {
-        "cep": "",
-        "city": "",
-        "state": "",
-        "street": "",
-        "number": "",
-        "complement": "",
-        "neighborhood": "",
-        "reference": ""
-      },
-      "exams": [
-        {
-          "name": "sdddddddd",
-          "date": "",
-          "time": "",
-          "type": "",
-          "lab": "",
-          "url": "",
-          "result": ""
-        }
-      ],
-      "appointments": [
-        {
-          "motive": "",
-          "date": "",
-          "time": "",
-          "description": "",
-          "medication": "",
-          "precautions": ""
-        }
-      ],
-      "id": 3
-    },
-    {
-      "identification": {
-        "name": "",
-        "gender": "",
-        "birth": "",
-        "cpf": "",
-        "rg": "",
-        "relationship": "",
-        "phone": "",
-        "email": "",
-        "nationality": "",
-        "allergy": "",
-        "emergencyContact": ""
-      },
-      "insurance": {
-        "name": "",
-        "number": "",
-        "validity": ""
-      },
-      "address": {
-        "cep": "",
-        "city": "",
-        "state": "",
-        "street": "",
-        "number": "",
-        "complement": "",
-        "neighborhood": "",
-        "reference": ""
-      },
-      "exams": [
-        {
-          "name": "",
-          "date": "",
-          "time": "",
-          "type": "",
-          "lab": "",
-          "url": "",
-          "result": ""
-        }
-      ],
-      "appointments": [
-        {
-          "motive": "sddddddddd",
-          "date": "",
-          "time": "",
-          "description": "",
-          "medication": "",
-          "precautions": ""
-        }
-      ],
-      "id": 4
     }
   ]
 }

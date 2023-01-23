@@ -11,6 +11,7 @@ import { PatientsService } from '../patients.service';
 })
 export class PatientActionsComponent {
   patient: Patients = {
+    id: 0,
     identification: {
       name: '',
       gender: '',
@@ -92,14 +93,25 @@ export class PatientActionsComponent {
 
   deletePatient() {
     if (this.patient.id) {
-      this.service.deletePatient(this.patient.id).subscribe(() => {
-        Swal.fire({
-          icon: 'success',
-          title: 'OK',
-          text: 'Paciente deletado com sucesso!',
+      if (
+        this.patient.exams.length === 0 &&
+        this.patient.appointments.length === 0
+      ) {
+        this.service.deletePatient(this.patient.id).subscribe(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'OK',
+            text: 'Paciente deletado com sucesso!',
+          });
+          this.router.navigate(['/']);
         });
-        this.router.navigate(['/']);
-      });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'O(a) paciente possui exames e/ou consultas cadastrados(as) e não pode ser excluído(a)!',
+        });
+      }
     }
   }
 }
