@@ -4,7 +4,9 @@
     <form class="needs-validation" novalidate="">
       <div class="row g-3">
         <div class="col-sm-12">
-          <label for="name" class="form-label">Nome completo:</label>
+          <label for="name" class="form-label needs-validation" novalidate
+            >Nome completo:</label
+          >
           <input
             type="text"
             class="form-control"
@@ -314,17 +316,13 @@
         </div>
       </div>
 
-      <button class="w-10 btn btn-secondary btn-lg">
-        Editar
-      </button>
+      <button class="w-10 btn btn-secondary btn-lg">Editar</button>
 
       <button class="w-10 btn btn-primary btn-lg" (click)="createPatient()">
         Salvar
       </button>
 
-      <button class="w-10 btn btn-danger btn-lg">
-        Deletar
-      </button>
+      <button class="w-10 btn btn-danger btn-lg">Deletar</button>
     </form>
   </div>
 </div>

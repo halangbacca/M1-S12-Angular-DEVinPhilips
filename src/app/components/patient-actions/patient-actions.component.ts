@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Patients } from '../patients';
 import { PatientsService } from '../patients.service';
 
@@ -10,7 +11,6 @@ import { PatientsService } from '../patients.service';
 })
 export class PatientActionsComponent {
   patient: Patients = {
-    id: 0,
     identification: {
       name: '',
       gender: '',
@@ -39,6 +39,27 @@ export class PatientActionsComponent {
       neighborhood: '',
       reference: '',
     },
+    exams: [
+      {
+        name: '',
+        date: '',
+        time: '',
+        type: '',
+        lab: '',
+        url: '',
+        result: '',
+      },
+    ],
+    appointments: [
+      {
+        motive: '',
+        date: '',
+        time: '',
+        description: '',
+        medication: '',
+        precautions: '',
+      },
+    ],
   };
 
   constructor(
@@ -60,7 +81,11 @@ export class PatientActionsComponent {
 
   editPatient() {
     this.service.editPatient(this.patient).subscribe(() => {
-      alert('Paciente editado com sucesso');
+      Swal.fire({
+        icon: 'success',
+        title: 'OK',
+        text: 'Paciente editado com sucesso!',
+      });
       this.router.navigate(['/']);
     });
   }
@@ -68,7 +93,11 @@ export class PatientActionsComponent {
   deletePatient() {
     if (this.patient.id) {
       this.service.deletePatient(this.patient.id).subscribe(() => {
-        alert('Paciente deletado com sucesso');
+        Swal.fire({
+          icon: 'success',
+          title: 'OK',
+          text: 'Paciente deletado com sucesso!',
+        });
         this.router.navigate(['/']);
       });
     }

@@ -1,9 +1,7 @@
-import { Appointments } from './appointments';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Patients } from './patients';
 import { Observable } from 'rxjs';
-import { Exams } from './exams';
 import { Users } from './users';
 
 @Injectable({
@@ -11,8 +9,6 @@ import { Users } from './users';
 })
 export class PatientsService {
   private readonly patientsUrl = 'http://localhost:3000/patients';
-  private readonly examsUrl = 'http://localhost:3000/exams';
-  private readonly appointmentsUrl = 'http://localhost:3000/appointments';
   private readonly usersUrl = 'http://localhost:3000/users';
 
   constructor(private http: HttpClient) {}
@@ -23,14 +19,6 @@ export class PatientsService {
 
   listPatients(): Observable<Patients[]> {
     return this.http.get<Patients[]>(this.patientsUrl);
-  }
-
-  listExams(): Observable<Exams[]> {
-    return this.http.get<Exams[]>(this.examsUrl);
-  }
-
-  listAppointents(): Observable<Appointments[]> {
-    return this.http.get<Appointments[]>(this.appointmentsUrl);
   }
 
   createPatient(patient: Patients): Observable<Patients> {
@@ -52,12 +40,12 @@ export class PatientsService {
     return this.http.get<Patients>(url);
   }
 
-  createExam(exam: Exams): Observable<Exams> {
-    return this.http.post<Exams>(this.examsUrl, exam);
+  createExam(exam: Patients): Observable<Patients> {
+    return this.http.post<Patients>(this.patientsUrl, exam);
   }
 
-  createAppointment(appointment: Appointments): Observable<Appointments> {
-    return this.http.post<Appointments>(this.appointmentsUrl, appointment);
+  createAppointment(appointment: Patients): Observable<Patients> {
+    return this.http.post<Patients>(this.patientsUrl, appointment);
   }
 
   createUser(user: Users): Observable<Users> {

@@ -2,8 +2,9 @@
   "users": [
     {
       "id": 1,
+      "name": "Halan Germano Bacca",
       "email": "email@exemplo.com",
-      "password": "123455678"
+      "password": "1234556789"
     }
   ],
   "patients": [
@@ -12,33 +13,189 @@
       "identification": {
         "name": "Halan Germano Bacca",
         "gender": "Homem cisgênero",
-        "birth": "2023-01-01",
-        "cpf": "1111111111",
-        "rg": "1111111111111111",
-        "relationship": "Casado(a)",
-        "phone": "47997200499",
-        "email": "email@example.com",
-        "nationality": "11111",
-        "allergy": "111111111111",
-        "emergencyContact": "1111111111111"
+        "birth": "1998-07-21",
+        "cpf": "111-111-111-11",
+        "rg": "1111111",
+        "relationship": "Solteiro(a)",
+        "phone": "(11)11111-1111",
+        "email": "halan@dominio.com",
+        "nationality": "Itajaiense",
+        "allergy": "AAS",
+        "emergencyContact": "(11)1111-1111"
       },
       "insurance": {
-        "name": "1111",
-        "number": "1111111111111111",
-        "validity": "11111111"
+        "name": "SUS",
+        "number": "123456789",
+        "validity": "10/05/2025"
       },
       "address": {
-        "cep": "888888888",
-        "city": "cidade",
-        "state": "1111",
-        "street": "11111111111111111",
-        "number": 11111111111,
-        "complement": "11111111111",
-        "neighborhood": "111111111111",
-        "reference": "111111111"
-      }
+        "cep": "88309000",
+        "city": "Itajaí",
+        "state": "SC",
+        "street": "São Joaquim",
+        "number": 137,
+        "complement": "Casa",
+        "neighborhood": "São Vicente",
+        "reference": "Em frente ao Auto Peças Edvaldo"
+      },
+      "exams": [],
+      "appointments": []
+    },
+    {
+      "identification": {
+        "name": "Luciana sssd",
+        "gender": "",
+        "birth": "",
+        "cpf": "",
+        "rg": "",
+        "relationship": "",
+        "phone": "",
+        "email": "",
+        "nationality": "",
+        "allergy": "",
+        "emergencyContact": ""
+      },
+      "insurance": {
+        "name": "",
+        "number": "",
+        "validity": ""
+      },
+      "address": {
+        "cep": "",
+        "city": "",
+        "state": "",
+        "street": "",
+        "number": "",
+        "complement": "",
+        "neighborhood": "",
+        "reference": ""
+      },
+      "exams": [
+        {
+          "name": "",
+          "date": "",
+          "time": "",
+          "type": "",
+          "lab": "",
+          "url": "",
+          "result": ""
+        }
+      ],
+      "appointments": [
+        {
+          "motive": "",
+          "date": "",
+          "time": "",
+          "description": "",
+          "medication": "",
+          "precautions": ""
+        }
+      ],
+      "id": 2
+    },
+    {
+      "identification": {
+        "name": "",
+        "gender": "",
+        "birth": "",
+        "cpf": "",
+        "rg": "",
+        "relationship": "",
+        "phone": "",
+        "email": "",
+        "nationality": "",
+        "allergy": "",
+        "emergencyContact": ""
+      },
+      "insurance": {
+        "name": "",
+        "number": "",
+        "validity": ""
+      },
+      "address": {
+        "cep": "",
+        "city": "",
+        "state": "",
+        "street": "",
+        "number": "",
+        "complement": "",
+        "neighborhood": "",
+        "reference": ""
+      },
+      "exams": [
+        {
+          "name": "sdddddddd",
+          "date": "",
+          "time": "",
+          "type": "",
+          "lab": "",
+          "url": "",
+          "result": ""
+        }
+      ],
+      "appointments": [
+        {
+          "motive": "",
+          "date": "",
+          "time": "",
+          "description": "",
+          "medication": "",
+          "precautions": ""
+        }
+      ],
+      "id": 3
+    },
+    {
+      "identification": {
+        "name": "",
+        "gender": "",
+        "birth": "",
+        "cpf": "",
+        "rg": "",
+        "relationship": "",
+        "phone": "",
+        "email": "",
+        "nationality": "",
+        "allergy": "",
+        "emergencyContact": ""
+      },
+      "insurance": {
+        "name": "",
+        "number": "",
+        "validity": ""
+      },
+      "address": {
+        "cep": "",
+        "city": "",
+        "state": "",
+        "street": "",
+        "number": "",
+        "complement": "",
+        "neighborhood": "",
+        "reference": ""
+      },
+      "exams": [
+        {
+          "name": "",
+          "date": "",
+          "time": "",
+          "type": "",
+          "lab": "",
+          "url": "",
+          "result": ""
+        }
+      ],
+      "appointments": [
+        {
+          "motive": "sddddddddd",
+          "date": "",
+          "time": "",
+          "description": "",
+          "medication": "",
+          "precautions": ""
+        }
+      ],
+      "id": 4
     }
-  ],
-  "exams": [],
-  "appointments": []
+  ]
 }

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -17,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AgePipe } from './components/age.pipe';
 import { PatientActionsComponent } from './components/patient-actions/patient-actions.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { PatientActionsComponent } from './components/patient-actions/patient-ac
     CardsComponent,
     AgePipe,
     PatientActionsComponent,
+    CreateUserComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +45,7 @@ import { PatientActionsComponent } from './components/patient-actions/patient-ac
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    SweetAlert2Module,
   ],
   providers: [],
   bootstrap: [AppComponent],

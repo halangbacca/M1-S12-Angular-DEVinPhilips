@@ -1,7 +1,8 @@
-import { Appointments } from './../appointments';
+import { Patients } from './../patients';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatientsService } from '../patients.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-appointment-registration',
@@ -9,15 +10,56 @@ import { PatientsService } from '../patients.service';
   styleUrls: ['./appointment-registration.component.css'],
 })
 export class AppointmentRegistrationComponent implements OnInit {
-  appointment: Appointments = {
-    id: 0,
-    patientId: 0,
-    motive: '',
-    date: '',
-    time: '',
-    description: '',
-    medication: '',
-    precautions: '',
+  patient: Patients = {
+    identification: {
+      name: '',
+      gender: '',
+      birth: '',
+      cpf: '',
+      rg: '',
+      relationship: '',
+      phone: '',
+      email: '',
+      nationality: '',
+      allergy: '',
+      emergencyContact: '',
+    },
+    insurance: {
+      name: '',
+      number: '',
+      validity: '',
+    },
+    address: {
+      cep: '',
+      city: '',
+      state: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      reference: '',
+    },
+    exams: [
+      {
+        name: '',
+        date: '',
+        time: '',
+        type: '',
+        lab: '',
+        url: '',
+        result: '',
+      },
+    ],
+    appointments: [
+      {
+        motive: '',
+        date: '',
+        time: '',
+        description: '',
+        medication: '',
+        precautions: '',
+      },
+    ],
   };
 
   constructor(private service: PatientsService, private router: Router) {}
@@ -25,8 +67,14 @@ export class AppointmentRegistrationComponent implements OnInit {
   ngOnInit(): void {}
 
   createAppointment() {
-    this.service.createAppointment(this.appointment).subscribe(() => {
-      alert('Consulta cadastrada com sucesso');
+    this.service.createAppointment(this.patient).subscribe(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Bem-Vindo(a)!',
+        text: 'Consulta cadastrada com sucesso!',
+        timer: 2000,
+        timerProgressBar: true,
+      });
       this.router.navigate(['/exam-registration']);
     });
   }

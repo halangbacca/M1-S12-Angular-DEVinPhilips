@@ -3,6 +3,7 @@ import { PatientsService } from './../patients.service';
 import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-patient-registration',
@@ -11,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class PatientRegistrationComponent implements OnInit {
   patient: Patients = {
-    id: 0,
     identification: {
       name: '',
       gender: '',
@@ -40,6 +40,27 @@ export class PatientRegistrationComponent implements OnInit {
       neighborhood: '',
       reference: '',
     },
+    exams: [
+      {
+        name: '',
+        date: '',
+        time: '',
+        type: '',
+        lab: '',
+        url: '',
+        result: '',
+      },
+    ],
+    appointments: [
+      {
+        motive: '',
+        date: '',
+        time: '',
+        description: '',
+        medication: '',
+        precautions: '',
+      },
+    ],
   };
 
   constructor(
@@ -48,11 +69,17 @@ export class PatientRegistrationComponent implements OnInit {
     private cep: CepService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.cep.search(this.patient.address.cep));
+  }
 
   createPatient() {
     this.service.createPatient(this.patient).subscribe(() => {
-      alert('Paciente cadastrado com sucesso');
+      Swal.fire({
+        icon: 'success',
+        title: 'OK',
+        text: 'Paciente cadastrado com sucesso!',
+      });
       this.router.navigate(['/appointment-registration']);
     });
   }

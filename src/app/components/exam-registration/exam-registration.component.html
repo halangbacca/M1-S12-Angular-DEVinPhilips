@@ -12,7 +12,7 @@
             id="exam"
             placeholder="Digite o nome do exame a ser realizado"
             required
-            [(ngModel)]="exam.name"
+            [(ngModel)]="patient.exams[0].name"
           />
         </div>
 
@@ -24,7 +24,7 @@
             name="date"
             id="date"
             required
-            [(ngModel)]="exam.date"
+            [(ngModel)]="patient.exams[0].date"
           />
         </div>
 
@@ -36,7 +36,7 @@
             name="time"
             id="time"
             required
-            [(ngModel)]="exam.time"
+            [(ngModel)]="patient.exams[0].time"
           />
         </div>
 
@@ -49,7 +49,7 @@
             id="type"
             placeholder="Digite o tipo de exame"
             required
-            [(ngModel)]="exam.type"
+            [(ngModel)]="patient.exams[0].type"
           />
         </div>
 
@@ -62,7 +62,7 @@
             id="lab"
             placeholder="Digite o nome do laboratório"
             required
-            [(ngModel)]="exam.lab"
+            [(ngModel)]="patient.exams[0].lab"
           />
         </div>
 
@@ -75,7 +75,7 @@
             id="url"
             placeholder="Digite a URL do documento do exame"
             required
-            [(ngModel)]="exam.url"
+            [(ngModel)]="patient.exams[0].url"
           />
         </div>
 
@@ -88,7 +88,7 @@
             rows="10"
             placeholder="Digite os resultados do exame"
             required
-            [(ngModel)]="exam.result"
+            [(ngModel)]="patient.exams[0].result"
           ></textarea>
         </div>
       </div>

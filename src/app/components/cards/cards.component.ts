@@ -1,5 +1,3 @@
-import { Appointments } from './../appointments';
-import { Exams } from './../exams';
 import { PatientsService } from './../patients.service';
 import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
@@ -10,9 +8,7 @@ import { Patients } from '../patients';
   styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent implements OnInit {
-  cards: Patients[] = [];
-  exams: Exams[] = [];
-  appointments: Appointments[] = [];
+  patients: Patients[] = [];
 
   qtdExams: number = 0;
   qtdPatients: number = 0;
@@ -22,16 +18,18 @@ export class CardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.listPatients().subscribe((patients) => {
-      this.cards = patients;
-      this.qtdPatients = this.cards.length;
+      this.patients = patients;
+      this.qtdPatients = patients.length;
     });
-    this.service.listExams().subscribe((exams) => {
-      this.exams = exams;
-      this.qtdExams = this.exams.length;
+    this.service.listPatients().subscribe((patients) => {
+      patients.forEach((patient) => {
+        this.qtdExams = patient.exams.length;
+      });
     });
-    this.service.listAppointents().subscribe((appointments) => {
-      this.appointments = appointments;
-      this.qtdAppointments = this.appointments.length;
+    this.service.listPatients().subscribe((patients) => {
+      patients.forEach((patient) => {
+        this.qtdAppointments = patient.appointments.length;
+      });
     });
   }
 }

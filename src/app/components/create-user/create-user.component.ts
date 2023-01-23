@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { PatientsService } from '../patients.service';
 import { Users } from '../users';
-import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class CreateUserComponent {
   user: Users = {
     id: 0,
     name: '',
@@ -17,29 +17,18 @@ export class LoginComponent implements OnInit {
     password: '',
   };
 
-  loginUsers: Users[] = [];
   regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  newPassword = '';
 
-  constructor(private service: PatientsService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.service.listUsers().subscribe((users) => {
-      return (this.loginUsers = users);
-    });
-  }
-
-  validate(email: string, password: string): any {
-    let existentUser = this.loginUsers.find(
-      (user) => user.email == email && user.password == password
-    );
-    if (existentUser) {
-      localStorage.setItem('user', JSON.stringify(existentUser));
-      return true;
+  confirmPassword() {
+    if (this.user.name === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Digite o seu nome!',
+      });
+      return;
     }
-    return false;
-  }
-
-  login() {
     if (this.user.email === '') {
       Swal.fire({
         icon: 'error',
@@ -60,7 +49,7 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Digite a sua senha!',
+        text: 'Digite uma senha!',
       });
       return;
     }
@@ -72,22 +61,38 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-    if (this.validate(this.user.email, this.user.password)) {
+    if (this.newPassword === '') {
       Swal.fire({
-        icon: 'success',
-        title: 'Bem-Vindo(a)!',
-        text: 'Entrada efetuada com sucesso!',
-        timer: 2000,
-        timerProgressBar: true,
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Confirme a sua senha!',
       });
-      this.router.navigate(['/']);
+      return;
+    }
+    if (this.user.password === this.newPassword) {
+      this.createUser();
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'E-mail e/ou senha incorretos!',
+        text: 'As senhas não conferem!',
       });
       return;
     }
+  }
+
+  constructor(private service: PatientsService, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  createUser() {
+    this.service.createUser(this.user).subscribe(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Bem-Vindo(a)!',
+        text: 'Usuário cadastrado com sucesso!',
+      });
+      this.router.navigate(['/login']);
+    });
   }
 }

@@ -10,11 +10,23 @@
   <div class="vl"></div>
 
   <div class="create-account">
-    <p routerLink="/create-user">Não possui conta?</p>
+    <p routerLink="/login">Voltar a página inicial</p>
   </div>
 </div>
 
 <div class="input">
+  <div class="mb-3">
+    <label for="name" class="form-label">Nome:</label>
+    <input
+      type="name"
+      class="form-control"
+      name="name"
+      id="name"
+      placeholder="Digite o seu nome"
+      [(ngModel)]="user.name"
+    />
+  </div>
+
   <div class="mb-3">
     <label for="email" class="form-label">E-mail:</label>
     <input
@@ -37,10 +49,18 @@
       [(ngModel)]="user.password"
     />
   </div>
-  <button type="button" class="btn btn-primary" (click)="login()">
-    Entrar
+  <div class="mb-3">
+    <label for="confirm-password" class="form-label">Confirmar senha:</label>
+    <input
+      type="password"
+      class="form-control"
+      name="confirm-password"
+      id="confirm-password"
+      placeholder="Digite novamente a sua senha"
+      [(ngModel)]="newPassword"
+    />
+  </div>
+  <button type="button" class="btn btn-primary" (click)="confirmPassword()">
+    Criar usuário
   </button>
-  <p class="forgotPassword" routerLink="/forgot-password">
-    Esqueceu sua senha?
-  </p>
 </div>

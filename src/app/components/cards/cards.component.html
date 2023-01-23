@@ -32,11 +32,11 @@
 </div>
 
 <h4>Informações rápidas de pacientes</h4>
-<div class="patient-card" *ngIf="cards.length > 0; else noPatients">
+<div class="patient-card" *ngIf="patients.length > 0; else noPatients">
   <div class="row row-cols-1 row-cols-md-3 g-3">
     <div
       class="col"
-      *ngFor="let patient of cards"
+      *ngFor="let patient of patients"
       routerLink="/patient-actions/{{ patient.id }}"
     >
       <div class="card patient">

@@ -28,4 +28,23 @@ export interface Patients {
     neighborhood: string;
     reference: string;
   };
+  exams: {
+    id?: number;
+    name: string;
+    date: string;
+    time: string;
+    type: string;
+    lab: string;
+    url: string;
+    result: string;
+  }[];
+  appointments: {
+    id?: number;
+    motive: string;
+    date: string;
+    time: string;
+    description: string;
+    medication: string;
+    precautions: string;
+  }[];
 }

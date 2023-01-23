@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Exams } from '../exams';
+import Swal from 'sweetalert2';
+import { Patients } from '../patients';
 import { PatientsService } from '../patients.service';
 
 @Component({
@@ -9,16 +10,56 @@ import { PatientsService } from '../patients.service';
   styleUrls: ['./exam-registration.component.css'],
 })
 export class ExamRegistrationComponent implements OnInit {
-  exam: Exams = {
-    id: 0,
-    patientId: 0,
-    name: '',
-    date: '',
-    time: '',
-    type: '',
-    lab: '',
-    url: '',
-    result: '',
+  patient: Patients = {
+    identification: {
+      name: '',
+      gender: '',
+      birth: '',
+      cpf: '',
+      rg: '',
+      relationship: '',
+      phone: '',
+      email: '',
+      nationality: '',
+      allergy: '',
+      emergencyContact: '',
+    },
+    insurance: {
+      name: '',
+      number: '',
+      validity: '',
+    },
+    address: {
+      cep: '',
+      city: '',
+      state: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      reference: '',
+    },
+    exams: [
+      {
+        name: '',
+        date: '',
+        time: '',
+        type: '',
+        lab: '',
+        url: '',
+        result: '',
+      },
+    ],
+    appointments: [
+      {
+        motive: '',
+        date: '',
+        time: '',
+        description: '',
+        medication: '',
+        precautions: '',
+      },
+    ],
   };
 
   constructor(private service: PatientsService, private router: Router) {}
@@ -26,8 +67,12 @@ export class ExamRegistrationComponent implements OnInit {
   ngOnInit(): void {}
 
   createExam() {
-    this.service.createExam(this.exam).subscribe(() => {
-      alert('Exame cadastrado com sucesso');
+    this.service.createExam(this.patient).subscribe(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'OK',
+        text: 'Exame cadastrado com sucesso!',
+      });
       this.router.navigate(['/appointment-workflow']);
     });
   }
