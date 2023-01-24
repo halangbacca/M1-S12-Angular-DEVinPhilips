@@ -39,13 +39,24 @@
       },
       "exams": [
         {
-          "name": "",
-          "date": "",
-          "time": "",
-          "type": "",
-          "lab": "",
-          "url": "",
-          "result": ""
+          "id": 1,
+          "name": "testeddddddddddd",
+          "date": "21/07/1998",
+          "time": "13:44",
+          "type": "sei lá",
+          "lab": "flor",
+          "url": "w22.google.com",
+          "result": "sdddddddddddddddddddddddddddddddddddddd halan bacca"
+        },
+        {
+          "id": 2,
+          "name": "testeddddddddddd",
+          "date": "2023-01-24",
+          "time": "13:44",
+          "type": "sei lá",
+          "lab": "flor",
+          "url": "w22.google.com",
+          "result": "sdddddddddddddddddddddddddddddddddddddd halan bacca"
         }
       ],
       "appointments": [
@@ -86,39 +97,6 @@
         "state": "SC",
         "street": "Rua São Joaquim",
         "number": "",
-        "complement": "",
-        "neighborhood": "São Vicente",
-        "reference": ""
-      },
-      "exams": [],
-      "appointments": []
-    },
-    {
-      "id": 5,
-      "identification": {
-        "name": "Halan Germano Bacca",
-        "gender": "Mulher transgênero",
-        "birth": "1998-07-21",
-        "cpf": "11111111111",
-        "rg": "11111111",
-        "relationship": "Casado(a)",
-        "phone": "47997200499",
-        "email": "lucianalamim@outlook.com",
-        "nationality": "11111111",
-        "allergy": "1111111111",
-        "emergencyContact": "47997200499"
-      },
-      "insurance": {
-        "name": "",
-        "number": "",
-        "validity": ""
-      },
-      "address": {
-        "cep": "88309-000",
-        "city": "Itajai",
-        "state": "SC",
-        "street": "Rua São Joaquim",
-        "number": 137,
         "complement": "",
         "neighborhood": "São Vicente",
         "reference": ""

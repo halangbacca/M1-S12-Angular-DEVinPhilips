@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PatientsService } from '../patients.service';
 import { Users } from '../users';
 import Swal from 'sweetalert2';
+import { AutenticateService } from '../autenticate.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,11 @@ export class LoginComponent implements OnInit {
   loginUsers: Users[] = [];
   regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  constructor(private service: PatientsService, private router: Router) {}
+  constructor(
+    private service: PatientsService,
+    private router: Router,
+    private authServer: AutenticateService
+  ) {}
 
   ngOnInit(): void {
     this.service.listUsers().subscribe((users) => {
@@ -72,8 +77,9 @@ export class LoginComponent implements OnInit {
         timer: 2000,
         timerProgressBar: true,
       });
+      this.authServer.authUser();
       localStorage.setItem('session', 'Estatísticas e Informações');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     } else {
       Swal.fire({
         icon: 'error',

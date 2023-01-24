@@ -318,7 +318,7 @@ export class PatientActionsComponent {
         title: 'OK',
         text: 'Paciente editado com sucesso!',
       });
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     });
   }
 
@@ -334,7 +334,7 @@ export class PatientActionsComponent {
             title: 'OK',
             text: 'Paciente deletado com sucesso!',
           });
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         });
       } else {
         Swal.fire({

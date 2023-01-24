@@ -45,12 +45,14 @@ export class PatientsService {
     return this.http.put<Patients>(url, exam);
   }
 
-  deleteExam(){
-
+  deleteExam(exam: Patients): Observable<Patients> {
+    const url = `${this.patientsUrl}/${exam.id}`;
+    return this.http.delete<Patients>(url);
   }
 
-  deleteAppointment(){
-    
+  deleteAppointment(appointment: Patients): Observable<Patients> {
+    const url = `${this.patientsUrl}/${appointment.id}`;
+    return this.http.delete<Patients>(url);
   }
 
   createAppointment(appointment: Patients): Observable<Patients> {

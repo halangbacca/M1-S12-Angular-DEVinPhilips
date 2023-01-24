@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AutenticateService } from '../autenticate.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,10 @@ export class HeaderComponent implements OnInit {
   session: any;
   currentSession: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AutenticateService
+    ) {}
 
   ngOnInit(): void {}
 
@@ -28,6 +32,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.authService.authUser();
     Swal.fire({
       icon: 'success',
       title: 'Volte logo!',
@@ -35,6 +40,6 @@ export class HeaderComponent implements OnInit {
       timer: 2000,
       timerProgressBar: true,
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

@@ -13,19 +13,40 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginGuard } from './guard/login.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: CardsComponent, canActivate: [LoginGuard] },
 
-  { path: 'home', component: CardsComponent, canActivate: [LoginGuard] },
+  { path: 'login', component: LoginComponent },
 
-  { path: 'patient-registration', component: PatientRegistrationComponent },
-  { path: 'exam-registration', component: ExamRegistrationComponent },
+  {
+    path: 'patient-registration',
+    component: PatientRegistrationComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'exam-registration',
+    component: ExamRegistrationComponent,
+    canActivate: [LoginGuard],
+  },
   {
     path: 'appointment-registration',
     component: AppointmentRegistrationComponent,
+    canActivate: [LoginGuard],
   },
-  { path: 'appointment-workflow', component: AppointmentWorkflowComponent },
-  { path: 'patient-workflow', component: PatientWorkflowComponent },
-  { path: 'patient-actions/:id', component: PatientActionsComponent },
+  {
+    path: 'appointment-workflow',
+    component: AppointmentWorkflowComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'patient-workflow',
+    component: PatientWorkflowComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'patient-actions/:id',
+    component: PatientActionsComponent,
+    canActivate: [LoginGuard],
+  },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
 ];

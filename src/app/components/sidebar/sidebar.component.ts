@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AutenticateService } from '../autenticate.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,7 +21,7 @@ export class SidebarComponent implements OnInit {
     'Prontuário do Paciente',
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authServer: AutenticateService) {}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
@@ -29,7 +30,7 @@ export class SidebarComponent implements OnInit {
 
   home() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[0]));
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   examRegistration() {
@@ -54,6 +55,7 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.authServer.authUser();
     Swal.fire({
       icon: 'success',
       title: 'Volte logo!',
@@ -61,6 +63,6 @@ export class SidebarComponent implements OnInit {
       timer: 2000,
       timerProgressBar: true,
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

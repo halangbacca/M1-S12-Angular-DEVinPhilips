@@ -1,3 +1,5 @@
+import { PatientsService } from './components/patients.service';
+import { LoginGuard } from './guard/login.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -47,7 +49,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     FormsModule,
     SweetAlert2Module,
   ],
-  providers: [],
+  providers: [PatientsService, LoginGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

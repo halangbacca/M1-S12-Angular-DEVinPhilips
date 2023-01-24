@@ -12,6 +12,7 @@ import { PatientsService } from '../patients.service';
 export class ExamRegistrationComponent implements OnInit {
   listPatients: Patients[] = [];
   filteredPatients: Patients[] = [];
+  isSearch: boolean = false;
 
   patient: Patients = {
     identification: {
@@ -77,6 +78,7 @@ export class ExamRegistrationComponent implements OnInit {
   search(e: Event): void {
     const target = e.target as HTMLInputElement;
     const value = target.value;
+    this.isSearch = true;
 
     this.filteredPatients = this.listPatients.filter((data: any) => {
       return (
@@ -90,6 +92,14 @@ export class ExamRegistrationComponent implements OnInit {
   }
 
   createExam() {
+    if (!this.isSearch) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Nome do paciente',
+        text: 'Selecione um paciente para cadastrar o exame!',
+      });
+      return;
+    }
     if (this.patient.exams[0].name === '') {
       Swal.fire({
         icon: 'error',
@@ -209,6 +219,17 @@ export class ExamRegistrationComponent implements OnInit {
         text: 'Exame cadastrado com sucesso!',
       });
       this.router.navigate(['/appointment-workflow']);
+    });
+  }
+
+  deleteExam() {
+    this.service.deleteExam(this.patient).subscribe(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'OK',
+        text: 'Exame deletado com sucesso!',
+      });
+      this.router.navigate(['/home']);
     });
   }
 }
