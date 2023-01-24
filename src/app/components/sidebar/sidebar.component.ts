@@ -19,8 +19,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logout() {
-    this.userObj = [];
-    localStorage.setItem('user', JSON.stringify(this.userObj));
+    localStorage.clear();
     Swal.fire({
       icon: 'success',
       title: 'Volte logo!',
@@ -28,6 +27,6 @@ export class SidebarComponent implements OnInit {
       timer: 2000,
       timerProgressBar: true,
     });
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }

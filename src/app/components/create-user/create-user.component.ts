@@ -92,7 +92,7 @@ export class CreateUserComponent {
         title: 'Bem-Vindo(a)!',
         text: 'Usuário cadastrado com sucesso!',
       });
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     });
   }
 }

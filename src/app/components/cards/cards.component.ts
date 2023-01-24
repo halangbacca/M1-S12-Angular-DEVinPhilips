@@ -9,6 +9,7 @@ import { Patients } from '../patients';
 })
 export class CardsComponent implements OnInit {
   patients: Patients[] = [];
+  filteredPatients: Patients[] = [];
 
   qtdExams: number = 0;
   qtdPatients: number = 0;
@@ -19,6 +20,7 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
     this.service.listPatients().subscribe((patients) => {
       this.patients = patients;
+      this.filteredPatients = patients;
       this.qtdPatients = patients.length;
     });
     this.service.listPatients().subscribe((patients) => {
@@ -30,6 +32,19 @@ export class CardsComponent implements OnInit {
       patients.forEach((patient) => {
         this.qtdAppointments = patient.appointments.length;
       });
+    });
+  }
+
+  search(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.filteredPatients = this.patients.filter((data) => {
+      return (
+        data.identification.name.toLowerCase().includes(value) ||
+        data.identification.phone.toLowerCase().includes(value) ||
+        data.identification.email.toLowerCase().includes(value)
+      );
     });
   }
 }

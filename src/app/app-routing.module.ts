@@ -10,10 +10,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginGuard } from './_guard/login.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', component: CardsComponent },
+  { path: '', component: LoginComponent },
+
+  { path: 'home', component: CardsComponent, canActivate: [LoginGuard] },
+
   { path: 'patient-registration', component: PatientRegistrationComponent },
   { path: 'exam-registration', component: ExamRegistrationComponent },
   {

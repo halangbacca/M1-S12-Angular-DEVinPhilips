@@ -69,7 +69,7 @@ export class ForgotPasswordComponent {
         title: 'Bem-Vindo(a) de volta!',
         text: `A sua senha é ${this.newPassword}`,
       });
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     } else {
       Swal.fire({
         icon: 'error',

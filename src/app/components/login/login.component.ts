@@ -64,14 +64,6 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-    if (this.user.password.length <= 8) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Sua senha deve possuir mais de 8 dígitos!',
-      });
-      return;
-    }
     if (this.validate(this.user.email, this.user.password)) {
       Swal.fire({
         icon: 'success',
@@ -80,7 +72,7 @@ export class LoginComponent implements OnInit {
         timer: 2000,
         timerProgressBar: true,
       });
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     } else {
       Swal.fire({
         icon: 'error',

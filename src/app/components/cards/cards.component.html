@@ -32,11 +32,24 @@
 </div>
 
 <h4>Informações rápidas de pacientes</h4>
+
+<div class="search-box">
+  <form class="w-100 me-5" role="search">
+    <input
+      type="search"
+      class="form-control"
+      placeholder="Digite o nome, e-mail ou telefone do paciente"
+      aria-label="Search"
+      (input)="search($event)"
+    />
+  </form>
+</div>
+
 <div class="patient-card" *ngIf="patients.length > 0; else noPatients">
   <div class="row row-cols-1 row-cols-md-3 g-3">
     <div
       class="col"
-      *ngFor="let patient of patients"
+      *ngFor="let patient of filteredPatients"
       routerLink="/patient-actions/{{ patient.id }}"
     >
       <div class="card patient">
