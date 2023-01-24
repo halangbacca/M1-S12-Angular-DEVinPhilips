@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Patients } from '../patients';
 import { PatientsService } from '../patients.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-exam-registration',
@@ -46,8 +47,8 @@ export class ExamRegistrationComponent implements OnInit {
     exams: [
       {
         name: '',
-        date: '',
-        time: '',
+        date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+        time: formatDate(new Date(), 'H:mm:ss', 'en'),
         type: '',
         lab: '',
         url: '',

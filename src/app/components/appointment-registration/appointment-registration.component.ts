@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatientsService } from '../patients.service';
 import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-appointment-registration',
@@ -56,8 +57,8 @@ export class AppointmentRegistrationComponent implements OnInit {
     appointments: [
       {
         motive: '',
-        date: '',
-        time: '',
+        date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+        time: formatDate(new Date(), 'H:mm:ss', 'en'),
         description: '',
         medication: '',
         precautions: '',
