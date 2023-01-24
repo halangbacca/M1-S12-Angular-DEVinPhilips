@@ -60,7 +60,7 @@
         />
         <div class="card-body">
           <h5 class="card-title">{{ patient.identification.name }}</h5>
-          <p class="card-text">{{ patient.identification.birth }}</p>
+          <p class="card-text">{{ patient.identification.birth | age }}</p>
           <h6>{{ patient.identification.phone }}</h6>
           <h6>{{ patient.insurance.name }}</h6>
           <p>Ver mais</p>
