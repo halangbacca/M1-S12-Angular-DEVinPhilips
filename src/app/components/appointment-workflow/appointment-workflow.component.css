@@ -7,21 +7,15 @@
   gap: 20px;
 }
 
-h4 {
-  position: relative;
-  right: 170px;
-  text-align: left;
-}
-
-tbody th,
-tbody td {
-  cursor: pointer;
-}
-
 .search-box {
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
   padding: 10px;
   text-align: center;
+}
+
+tbody th,
+tbody td {
+  cursor: pointer;
 }

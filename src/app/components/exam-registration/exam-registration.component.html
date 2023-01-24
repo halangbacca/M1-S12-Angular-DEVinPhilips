@@ -1,7 +1,23 @@
 <div class="container">
   <div class="col-md-7 col-lg-8">
-    <h4 class="mb-3">Exame de [NOME DO PACIENTE]</h4>
-    <form class="needs-validation" *ngFor="let exam of patient.exams" novalidate>
+    <h4 class="mb-3">Encontre o paciente:</h4>
+    <div class="search-box">
+      <form class="w-100 me-5" role="search">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Digite o nome ou identificador do paciente"
+          aria-label="Search"
+          (input)="search($event)"
+        />
+      </form>
+    </div>
+    <h4 class="mb-3">Exame de {{ patient.identification.name }}</h4>
+    <form
+      *ngFor="let patient of patient.exams"
+      class="needs-validation"
+      novalidate
+    >
       <div class="row g-3">
         <div class="col-sm-12">
           <label for="exam" class="form-label">Nome do exame:</label>
@@ -11,7 +27,7 @@
             name="exam"
             id="exam"
             placeholder="Digite o nome do exame a ser realizado"
-            [(ngModel)]="exam.name"
+            [(ngModel)]="patient.name"
           />
         </div>
 
@@ -22,7 +38,7 @@
             class="form-control"
             name="date"
             id="date"
-            [(ngModel)]="exam.date"
+            [(ngModel)]="patient.date"
           />
         </div>
 
@@ -33,7 +49,7 @@
             class="form-control"
             name="time"
             id="time"
-            [(ngModel)]="exam.time"
+            [(ngModel)]="patient.time"
           />
         </div>
 
@@ -45,7 +61,7 @@
             name="type"
             id="type"
             placeholder="Digite o tipo de exame"
-            [(ngModel)]="exam.type"
+            [(ngModel)]="patient.type"
           />
         </div>
 
@@ -57,7 +73,7 @@
             name="lab"
             id="lab"
             placeholder="Digite o nome do laboratório"
-            [(ngModel)]="exam.lab"
+            [(ngModel)]="patient.lab"
           />
         </div>
 
@@ -69,7 +85,7 @@
             name="url"
             id="url"
             placeholder="Digite a URL do documento do exame"
-            [(ngModel)]="exam.url"
+            [(ngModel)]="patient.url"
           />
         </div>
 
@@ -81,7 +97,7 @@
             id="results"
             rows="10"
             placeholder="Digite os resultados do exame"
-            [(ngModel)]="exam.result"
+            [(ngModel)]="patient.result"
           ></textarea>
         </div>
       </div>

@@ -10,6 +10,9 @@ import { PatientsService } from '../patients.service';
   styleUrls: ['./exam-registration.component.css'],
 })
 export class ExamRegistrationComponent implements OnInit {
+  listPatients: Patients[] = [];
+  filteredPatients: Patients[] = [];
+
   patient: Patients = {
     identification: {
       name: '',
@@ -64,7 +67,27 @@ export class ExamRegistrationComponent implements OnInit {
 
   constructor(private service: PatientsService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.service.listPatients().subscribe((patients) => {
+      this.listPatients = patients;
+      this.filteredPatients = patients;
+    });
+  }
+
+  search(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.filteredPatients = this.listPatients.filter((data: any) => {
+      return (
+        data.identification.name.toLowerCase().includes(value) ||
+        data.identification.phone.toLowerCase().includes(value) ||
+        data.identification.email.toLowerCase().includes(value)
+      );
+    });
+
+    this.filteredPatients.forEach((value) => (this.patient = value));
+  }
 
   createExam() {
     if (this.patient.exams[0].name === '') {

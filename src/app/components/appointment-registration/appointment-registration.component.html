@@ -1,7 +1,19 @@
 <div class="container">
   <div class="col-md-7 col-lg-8">
-    <h4 class="mb-3">Consulta de [NOME DO PACIENTE]</h4>
-    <form class="needs-validation" novalidate>
+    <h4 class="mb-3">Encontre o paciente:</h4>
+    <div class="search-box">
+      <form class="w-100 me-5" role="search">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Digite o nome ou identificador do paciente"
+          aria-label="Search"
+          (input)="search($event)"
+        />
+      </form>
+    </div>
+    <h4 class="mb-3">Consulta de {{ patient.identification.name }}</h4>
+    <form *ngFor="let patient of patient.appointments" class="needs-validation" novalidate>
       <div class="row g-3">
         <div class="col-sm-12">
           <label for="reason-appointment" class="form-label"
@@ -14,7 +26,7 @@
             id="reason-appointment"
             placeholder="Digite o motivo da consulta"
             required
-            [(ngModel)]="patient.appointments[0].motive"
+            [(ngModel)]="patient.motive"
           />
           <div class="valid-feedback">Validado</div>
           <div class="invalid-feedback">Digite o motivo da consulta</div>
@@ -28,7 +40,7 @@
             name="date"
             id="date"
             required
-            [(ngModel)]="patient.appointments[0].date"
+            [(ngModel)]="patient.date"
           />
         </div>
 
@@ -40,7 +52,7 @@
             name="time"
             id="time"
             required
-            [(ngModel)]="patient.appointments[0].time"
+            [(ngModel)]="patient.time"
           />
         </div>
 
@@ -55,7 +67,7 @@
             rows="10"
             placeholder="Digite a descrição do problema"
             required
-            [(ngModel)]="patient.appointments[0].description"
+            [(ngModel)]="patient.description"
           ></textarea>
         </div>
         <div class="form-group">
@@ -69,7 +81,7 @@
             rows="5"
             placeholder="Digite a medicação receitada"
             required
-            [(ngModel)]="patient.appointments[0].medication"
+            [(ngModel)]="patient.medication"
           ></textarea>
         </div>
         <div class="form-group">
@@ -83,7 +95,7 @@
             rows="5"
             placeholder="Digite a dosagem e as precauções"
             required
-            [(ngModel)]="patient.appointments[0].precautions"
+            [(ngModel)]="patient.precautions"
           ></textarea>
         </div>
       </div>

@@ -7,14 +7,22 @@
   gap: 20px;
 }
 
+.container label {
+  font-weight: 500;
+}
+
+.search-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  padding: 10px;
+  text-align: center;
+}
+
 h4 {
   position: relative;
   right: 170px;
   text-align: left;
-}
-
-.container label {
-  font-weight: 500;
 }
 
 button {
