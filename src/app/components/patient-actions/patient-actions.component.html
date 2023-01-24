@@ -1,6 +1,8 @@
 <div class="container">
   <div class="col-md-7 col-lg-8">
-    <h4 class="mb-3">Edição do(a) paciente {{patient.identification.name}}</h4>
+    <h4 class="mb-3">
+      Edição do(a) paciente {{ patient.identification.name }}
+    </h4>
     <form class="needs-validation" novalidate="">
       <div class="row g-3">
         <div class="col-sm-12">
@@ -177,14 +179,14 @@
         </div>
 
         <div class="col-sm-6">
-          <label for="wallet-number" class="form-label"
+          <label for="insurance-number" class="form-label"
             >Número da carteira:</label
           >
           <input
-            type="text"
+            type="number"
             class="form-control"
-            id="wallet-number"
-            name="wallet-number"
+            id="insurance-number"
+            name="insurance-number"
             placeholder="Digite o número carteira do paciente"
             required
             [(ngModel)]="patient.insurance.number"
@@ -194,7 +196,7 @@
         <div class="col-sm-12">
           <label for="validity" class="form-label">Validade:</label>
           <input
-            type="text"
+            type="date"
             class="form-control"
             id="validity"
             name="validity"

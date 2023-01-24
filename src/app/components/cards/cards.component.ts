@@ -23,15 +23,11 @@ export class CardsComponent implements OnInit {
       this.filteredPatients = patients;
       this.qtdPatients = patients.length;
     });
-    this.service.listPatients().subscribe((patients) => {
-      patients.forEach((patient) => {
-        this.qtdExams = patient.exams.length;
-      });
+    this.service.listExams().subscribe((exams) => {
+      this.qtdExams = exams.length;
     });
-    this.service.listPatients().subscribe((patients) => {
-      patients.forEach((patient) => {
-        this.qtdAppointments = patient.appointments.length;
-      });
+    this.service.listAppointments().subscribe((appointments) => {
+      this.qtdAppointments = appointments.length;
     });
   }
 

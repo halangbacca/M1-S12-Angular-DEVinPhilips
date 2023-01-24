@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Patients } from '../patients';
 import { PatientsService } from '../patients.service';
 import { formatDate } from '@angular/common';
+import { Exams } from '../exams';
+import { Patients } from '../patients';
 
 @Component({
   selector: 'app-exam-registration',
@@ -14,6 +15,17 @@ export class ExamRegistrationComponent implements OnInit {
   listPatients: Patients[] = [];
   filteredPatients: Patients[] = [];
   isSearch: boolean = false;
+
+  exam: Exams = {
+    id: 0,
+    name: '',
+    date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    time: formatDate(new Date(), 'H:mm:ss', 'en'),
+    type: '',
+    lab: '',
+    url: '',
+    result: '',
+  };
 
   patient: Patients = {
     identification: {
@@ -44,27 +56,6 @@ export class ExamRegistrationComponent implements OnInit {
       neighborhood: '',
       reference: '',
     },
-    exams: [
-      {
-        name: '',
-        date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-        time: formatDate(new Date(), 'H:mm:ss', 'en'),
-        type: '',
-        lab: '',
-        url: '',
-        result: '',
-      },
-    ],
-    appointments: [
-      {
-        motive: '',
-        date: '',
-        time: '',
-        description: '',
-        medication: '',
-        precautions: '',
-      },
-    ],
   };
 
   constructor(private service: PatientsService, private router: Router) {}
@@ -88,7 +79,6 @@ export class ExamRegistrationComponent implements OnInit {
         data.identification.email.toLowerCase().includes(value)
       );
     });
-
     this.filteredPatients.forEach((value) => (this.patient = value));
   }
 
@@ -101,7 +91,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].name === '') {
+    if (this.exam.name === '') {
       Swal.fire({
         icon: 'error',
         title: 'Nome do exame',
@@ -109,7 +99,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].name.length > 64) {
+    if (this.exam.name.length > 64) {
       Swal.fire({
         icon: 'error',
         title: 'Nome do exame',
@@ -117,7 +107,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].name.length < 8) {
+    if (this.exam.name.length < 8) {
       Swal.fire({
         icon: 'error',
         title: 'Nome do exame',
@@ -125,7 +115,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].date === '') {
+    if (this.exam.date === '') {
       Swal.fire({
         icon: 'error',
         title: 'Data do exame',
@@ -133,7 +123,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].time === '') {
+    if (this.exam.time === '') {
       Swal.fire({
         icon: 'error',
         title: 'Horário do exame',
@@ -141,7 +131,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].type === '') {
+    if (this.exam.type === '') {
       Swal.fire({
         icon: 'error',
         title: 'Tipo de exame',
@@ -149,7 +139,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].type.length > 32) {
+    if (this.exam.type.length > 32) {
       Swal.fire({
         icon: 'error',
         title: 'Tipo de exame',
@@ -157,7 +147,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].type.length < 4) {
+    if (this.exam.type.length < 4) {
       Swal.fire({
         icon: 'error',
         title: 'Tipo de exame',
@@ -165,7 +155,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].lab === '') {
+    if (this.exam.lab === '') {
       Swal.fire({
         icon: 'error',
         title: 'Laboratório',
@@ -173,7 +163,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].lab.length > 32) {
+    if (this.exam.lab.length > 32) {
       Swal.fire({
         icon: 'error',
         title: 'Laboratório',
@@ -181,7 +171,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].lab.length < 4) {
+    if (this.exam.lab.length < 4) {
       Swal.fire({
         icon: 'error',
         title: 'Laboratório',
@@ -189,7 +179,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].result === '') {
+    if (this.exam.result === '') {
       Swal.fire({
         icon: 'error',
         title: 'Resultados',
@@ -197,7 +187,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].result.length > 1024) {
+    if (this.exam.result.length > 1024) {
       Swal.fire({
         icon: 'error',
         title: 'Resultados',
@@ -205,7 +195,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.exams[0].result.length < 16) {
+    if (this.exam.result.length < 16) {
       Swal.fire({
         icon: 'error',
         title: 'Resultados',
@@ -213,7 +203,7 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    this.service.createExam(this.patient).subscribe(() => {
+    this.service.createExam(this.exam).subscribe(() => {
       Swal.fire({
         icon: 'success',
         title: 'OK',
@@ -224,13 +214,13 @@ export class ExamRegistrationComponent implements OnInit {
   }
 
   deleteExam() {
-    this.service.deleteExam(this.patient).subscribe(() => {
+    this.service.deleteExam(this.exam.id!).subscribe(() => {
       Swal.fire({
         icon: 'success',
         title: 'OK',
         text: 'Exame deletado com sucesso!',
       });
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     });
   }
 }

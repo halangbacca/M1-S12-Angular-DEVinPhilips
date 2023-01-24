@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-patient-registration',
@@ -38,7 +39,7 @@ export class PatientRegistrationComponent implements OnInit {
     insurance: {
       name: '',
       number: '',
-      validity: '',
+      validity: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     },
     address: {
       cep: '',
@@ -50,8 +51,6 @@ export class PatientRegistrationComponent implements OnInit {
       neighborhood: '',
       reference: '',
     },
-    exams: [],
-    appointments: [],
   };
 
   constructor(

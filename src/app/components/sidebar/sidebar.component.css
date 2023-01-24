@@ -5,3 +5,17 @@
 .fs-5 {
   font-weight: 500;
 }
+
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #6dabfc;
+}
+
+li {
+  cursor: pointer;
+}

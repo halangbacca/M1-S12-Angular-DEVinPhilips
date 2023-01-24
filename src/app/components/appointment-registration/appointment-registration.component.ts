@@ -1,3 +1,4 @@
+import { Appointments } from './../appointments';
 import { Patients } from './../patients';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,6 +14,15 @@ import { formatDate } from '@angular/common';
 export class AppointmentRegistrationComponent implements OnInit {
   listPatients: Patients[] = [];
   filteredPatients: Patients[] = [];
+
+  appointment: Appointments = {
+    motive: '',
+    date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    time: formatDate(new Date(), 'H:mm:ss', 'en'),
+    description: '',
+    medication: '',
+    precautions: '',
+  };
 
   patient: Patients = {
     identification: {
@@ -43,27 +53,6 @@ export class AppointmentRegistrationComponent implements OnInit {
       neighborhood: '',
       reference: '',
     },
-    exams: [
-      {
-        name: '',
-        date: '',
-        time: '',
-        type: '',
-        lab: '',
-        url: '',
-        result: '',
-      },
-    ],
-    appointments: [
-      {
-        motive: '',
-        date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-        time: formatDate(new Date(), 'H:mm:ss', 'en'),
-        description: '',
-        medication: '',
-        precautions: '',
-      },
-    ],
   };
 
   constructor(private service: PatientsService, private router: Router) {}
@@ -91,7 +80,7 @@ export class AppointmentRegistrationComponent implements OnInit {
   }
 
   createAppointment() {
-    if (this.patient.appointments[0].motive === '') {
+    if (this.appointment.motive === '') {
       Swal.fire({
         icon: 'error',
         title: 'Motivo da consulta',
@@ -99,7 +88,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].motive.length > 64) {
+    if (this.appointment.motive.length > 64) {
       Swal.fire({
         icon: 'error',
         title: 'Motivo da consulta',
@@ -107,7 +96,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].motive.length < 8) {
+    if (this.appointment.motive.length < 8) {
       Swal.fire({
         icon: 'error',
         title: 'Motivo da consulta',
@@ -115,7 +104,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].date === '') {
+    if (this.appointment.date === '') {
       Swal.fire({
         icon: 'error',
         title: 'Data da consulta',
@@ -123,7 +112,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].time === '') {
+    if (this.appointment.time === '') {
       Swal.fire({
         icon: 'error',
         title: 'Horário da consulta',
@@ -131,7 +120,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].description === '') {
+    if (this.appointment.description === '') {
       Swal.fire({
         icon: 'error',
         title: 'Descrição do problema',
@@ -139,7 +128,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].description.length > 1024) {
+    if (this.appointment.description.length > 1024) {
       Swal.fire({
         icon: 'error',
         title: 'Descrição do problema',
@@ -147,7 +136,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].description.length < 16) {
+    if (this.appointment.description.length < 16) {
       Swal.fire({
         icon: 'error',
         title: 'Descrição do problema',
@@ -155,7 +144,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].precautions === '') {
+    if (this.appointment.precautions === '') {
       Swal.fire({
         icon: 'error',
         title: 'Dosagem e precauções',
@@ -163,7 +152,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].precautions.length > 256) {
+    if (this.appointment.precautions.length > 256) {
       Swal.fire({
         icon: 'error',
         title: 'Dosagem e precauções',
@@ -171,7 +160,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    if (this.patient.appointments[0].precautions.length < 16) {
+    if (this.appointment.precautions.length < 16) {
       Swal.fire({
         icon: 'error',
         title: 'Dosagem e precauções',
@@ -179,7 +168,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    this.service.createAppointment(this.patient).subscribe(() => {
+    this.service.createAppointment(this.appointment).subscribe(() => {
       Swal.fire({
         icon: 'success',
         title: 'OK',

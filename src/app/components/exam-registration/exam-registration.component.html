@@ -6,15 +6,15 @@
         <input
           type="search"
           class="form-control"
-          placeholder="Digite o nome ou identificador do paciente"
+          placeholder="Digite o nome, e-mail ou telefone do paciente"
           aria-label="Search"
           (input)="search($event)"
         />
       </form>
     </div>
-    <h4 class="mb-3">Exames de {{ patient.identification.name }}:</h4>
+    <h4 class="mb-3">Exame de [NOME DO PACIENTE]:</h4>
     <form
-      *ngFor="let patient of patient.exams"
+      
       class="needs-validation"
       novalidate
     >
@@ -27,7 +27,7 @@
             name="exam"
             id="exam"
             placeholder="Digite o nome do exame a ser realizado"
-            [(ngModel)]="patient.name"
+            [(ngModel)]="exam.name"
           />
         </div>
 
@@ -38,7 +38,7 @@
             class="form-control"
             name="date"
             id="date"
-            [(ngModel)]="patient.date"
+            [(ngModel)]="exam.date"
           />
         </div>
 
@@ -49,7 +49,7 @@
             class="form-control"
             name="time"
             id="time"
-            [(ngModel)]="patient.time"
+            [(ngModel)]="exam.time"
           />
         </div>
 
@@ -61,7 +61,7 @@
             name="type"
             id="type"
             placeholder="Digite o tipo de exame"
-            [(ngModel)]="patient.type"
+            [(ngModel)]="exam.type"
           />
         </div>
 
@@ -73,7 +73,7 @@
             name="lab"
             id="lab"
             placeholder="Digite o nome do laboratório"
-            [(ngModel)]="patient.lab"
+            [(ngModel)]="exam.lab"
           />
         </div>
 
@@ -85,7 +85,7 @@
             name="url"
             id="url"
             placeholder="Digite a URL do documento do exame"
-            [(ngModel)]="patient.url"
+            [(ngModel)]="exam.url"
           />
         </div>
 
@@ -97,7 +97,7 @@
             id="results"
             rows="10"
             placeholder="Digite os resultados do exame"
-            [(ngModel)]="patient.result"
+            [(ngModel)]="exam.result"
           ></textarea>
         </div>
       </div>

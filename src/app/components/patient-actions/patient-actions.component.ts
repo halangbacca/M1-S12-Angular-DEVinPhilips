@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Patients } from '../patients';
 import { PatientsService } from '../patients.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-patient-actions',
@@ -38,7 +39,7 @@ export class PatientActionsComponent {
     insurance: {
       name: '',
       number: '',
-      validity: '',
+      validity: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     },
     address: {
       cep: '',
@@ -50,27 +51,6 @@ export class PatientActionsComponent {
       neighborhood: '',
       reference: '',
     },
-    exams: [
-      {
-        name: '',
-        date: '',
-        time: '',
-        type: '',
-        lab: '',
-        url: '',
-        result: '',
-      },
-    ],
-    appointments: [
-      {
-        motive: '',
-        date: '',
-        time: '',
-        description: '',
-        medication: '',
-        precautions: '',
-      },
-    ],
   };
 
   constructor(
@@ -82,7 +62,7 @@ export class PatientActionsComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.service.searchById(parseInt(id!)).subscribe((patient) => {
+    this.service.searchPatientById(parseInt(id!)).subscribe((patient) => {
       this.patient = patient;
     });
   }
@@ -318,16 +298,16 @@ export class PatientActionsComponent {
         title: 'OK',
         text: 'Paciente editado com sucesso!',
       });
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     });
   }
 
   deletePatient() {
     if (this.patient.id) {
-      if (
-        this.patient.exams.length === 0 &&
-        this.patient.appointments.length === 0
-      ) {
+      // if (
+      //   this.patient.exams.length === 0 &&
+      //   this.patient.appointments.length === 0
+      // ) {
         this.service.deletePatient(this.patient.id).subscribe(() => {
           Swal.fire({
             icon: 'success',
@@ -345,4 +325,4 @@ export class PatientActionsComponent {
       }
     }
   }
-}
+// }

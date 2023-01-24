@@ -28,6 +28,10 @@ export class SidebarComponent implements OnInit {
     this.userObj = JSON.parse(this.user);
   }
 
+  collapse(){
+    // Implementar a função de collapse sidebar
+  }
+
   home() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[0]));
     this.router.navigate(['/']);
