@@ -169,6 +169,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       return;
     }
     this.service.createAppointment(this.appointment).subscribe(() => {
+      localStorage.setItem('session', JSON.stringify('Cadastro de Exames'));
       Swal.fire({
         icon: 'success',
         title: 'OK',

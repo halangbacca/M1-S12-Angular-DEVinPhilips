@@ -59,12 +59,12 @@ export class PatientsService {
     return this.http.post<Patients>(this.patientsUrl, patient);
   }
 
-  createExam(exam: Exams): Observable<Patients> {
-    return this.http.post<Patients>(this.examsUrl, exam);
+  createExam(exam: Exams): Observable<Exams> {
+    return this.http.post<Exams>(this.examsUrl, exam);
   }
 
-  createAppointment(appointment: Appointments): Observable<Patients> {
-    return this.http.post<Patients>(this.examsUrl, appointment);
+  createAppointment(appointment: Appointments): Observable<Appointments> {
+    return this.http.post<Appointments>(this.appointmentsUrl, appointment);
   }
 
   // Deleção dos dados
@@ -95,7 +95,7 @@ export class PatientsService {
   }
 
   editAppointment(appointment: Appointments): Observable<Appointments> {
-    const url = `${this.patientsUrl}/${appointment.id}`;
+    const url = `${this.appointmentsUrl}/${appointment.id}`;
     return this.http.put<Appointments>(url, appointment);
   }
 }

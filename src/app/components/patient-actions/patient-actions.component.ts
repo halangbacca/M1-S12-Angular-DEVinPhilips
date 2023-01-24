@@ -308,21 +308,25 @@ export class PatientActionsComponent {
       //   this.patient.exams.length === 0 &&
       //   this.patient.appointments.length === 0
       // ) {
-        this.service.deletePatient(this.patient.id).subscribe(() => {
-          Swal.fire({
-            icon: 'success',
-            title: 'OK',
-            text: 'Paciente deletado com sucesso!',
-          });
-          this.router.navigate(['/home']);
-        });
-      } else {
+      this.service.deletePatient(this.patient.id).subscribe(() => {
+        localStorage.setItem(
+          'session',
+          JSON.stringify('Estatísticas e Informações')
+        );
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'O(a) paciente possui exames e/ou consultas cadastrados(as) e não pode ser excluído(a)!',
+          icon: 'success',
+          title: 'OK',
+          text: 'Paciente deletado com sucesso!',
         });
-      }
+        this.router.navigate(['/home']);
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'O(a) paciente possui exames e/ou consultas cadastrados(as) e não pode ser excluído(a)!',
+      });
     }
   }
+}
 // }

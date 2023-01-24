@@ -283,6 +283,7 @@ export class PatientRegistrationComponent implements OnInit {
     }
 
     this.service.createPatient(this.patient).subscribe(() => {
+      localStorage.setItem('session', JSON.stringify('Cadastro de Consulta'));
       Swal.fire({
         icon: 'success',
         title: 'OK',

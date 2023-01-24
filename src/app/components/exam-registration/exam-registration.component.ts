@@ -83,14 +83,6 @@ export class ExamRegistrationComponent implements OnInit {
   }
 
   createExam() {
-    if (!this.isSearch) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Nome do paciente',
-        text: 'Selecione um paciente para cadastrar o exame!',
-      });
-      return;
-    }
     if (this.exam.name === '') {
       Swal.fire({
         icon: 'error',
@@ -204,6 +196,10 @@ export class ExamRegistrationComponent implements OnInit {
       return;
     }
     this.service.createExam(this.exam).subscribe(() => {
+      localStorage.setItem(
+        'session',
+        JSON.stringify('Listagem de Prontuários')
+      );
       Swal.fire({
         icon: 'success',
         title: 'OK',
@@ -215,6 +211,10 @@ export class ExamRegistrationComponent implements OnInit {
 
   deleteExam() {
     this.service.deleteExam(this.exam.id!).subscribe(() => {
+      localStorage.setItem(
+        'session',
+        JSON.stringify('Estatísticas e Informações')
+      );
       Swal.fire({
         icon: 'success',
         title: 'OK',
