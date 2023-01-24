@@ -9,13 +9,21 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
   user: any;
-  userObj: any;
+  currentUser: any;
+
+  session: any;
+  currentSession: any;
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngDoCheck(): void {
     this.user = localStorage.getItem('user');
-    this.userObj = JSON.parse(this.user);
+    this.currentUser = JSON.parse(this.user);
+
+    this.session = localStorage.getItem('session');
+    console.log(this.currentSession = JSON.parse(this.session));
   }
 
   logout() {

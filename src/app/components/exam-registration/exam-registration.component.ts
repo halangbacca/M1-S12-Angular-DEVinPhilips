@@ -42,7 +42,7 @@ export class ExamRegistrationComponent implements OnInit {
     exams: [
       {
         name: '',
-        date: new Date().toLocaleDateString(),
+        date: '',
         time: '',
         type: '',
         lab: '',

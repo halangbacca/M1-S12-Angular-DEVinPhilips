@@ -1,6 +1,17 @@
 <div class="container">
   <div class="col-md-7 col-lg-8">
     <h4 class="mb-3">Listagem de Prontuários</h4>
+    <div class="search-box">
+      <form class="w-100 me-5" role="search">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Digite o nome ou identificador do paciente"
+          aria-label="Search"
+          (input)="search($event)"
+        />
+      </form>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -10,7 +21,7 @@
         </tr>
       </thead>
       <tbody
-        *ngFor="let patient of workflow"
+        *ngFor="let patient of filteredPatients"
         routerLink="/patient-actions/{{ patient.id }}"
       >
         <tr>

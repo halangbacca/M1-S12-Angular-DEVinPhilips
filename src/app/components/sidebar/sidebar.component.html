@@ -6,7 +6,7 @@
     <span class="fs-5">Geral</span>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a routerLink="/home" class="nav-link link-dark" aria-current="page">
+        <a (click)="home()" class="nav-link link-dark" aria-current="page">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -43,7 +43,7 @@
       <hr />
       <span class="fs-5">Pacientes</span>
       <li>
-        <a routerLink="/patient-registration" class="nav-link link-dark">
+        <a (click)="patientRegistration()" class="nav-link link-dark">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -63,7 +63,7 @@
         </a>
       </li>
       <li>
-        <a routerLink="/appointment-workflow" class="nav-link link-dark">
+        <a (click)="appointmentWorkflow()" class="nav-link link-dark">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -83,7 +83,7 @@
       <hr />
       <span class="fs-5">Exames</span>
       <li>
-        <a routerLink="/appointment-registration" class="nav-link link-dark">
+        <a (click)="createAppointment()" class="nav-link link-dark">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -103,7 +103,7 @@
         </a>
       </li>
       <li>
-        <a routerLink="/exam-registration" class="nav-link link-dark">
+        <a (click)="examRegistration()" class="nav-link link-dark">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

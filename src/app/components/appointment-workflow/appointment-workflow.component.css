@@ -17,3 +17,11 @@ tbody th,
 tbody td {
   cursor: pointer;
 }
+
+.search-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  padding: 10px;
+  text-align: center;
+}
