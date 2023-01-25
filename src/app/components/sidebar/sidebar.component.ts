@@ -19,6 +19,8 @@ export class SidebarComponent implements OnInit {
     'Cadastro de Exame',
     'Listagem de Prontuários',
     'Prontuário do Paciente',
+    'Listagem de Exames',
+    'Listagem de Consultas'
   ];
 
   constructor(private router: Router, private authServer: AutenticateService) {}
@@ -28,7 +30,7 @@ export class SidebarComponent implements OnInit {
     this.userObj = JSON.parse(this.user);
   }
 
-  collapse(){
+  collapse() {
     // Implementar a função de collapse sidebar
   }
 
@@ -42,6 +44,11 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/exam-registration']);
   }
 
+  listExams() {
+    localStorage.setItem('session', JSON.stringify(this.currentSession[7]));
+    this.router.navigate(['/exams-workflow']);
+  }
+
   patientRegistration() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[1]));
     this.router.navigate(['/patient-registration']);
@@ -50,6 +57,11 @@ export class SidebarComponent implements OnInit {
   createAppointment() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[3]));
     this.router.navigate(['/appointment-registration']);
+  }
+
+  listAppointments() {
+    localStorage.setItem('session', JSON.stringify(this.currentSession[8]));
+    this.router.navigate(['/consults-workflow']);
   }
 
   appointmentWorkflow() {

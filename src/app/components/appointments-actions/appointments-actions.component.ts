@@ -1,98 +1,50 @@
 import { Appointments } from './../appointments';
-import { Patients } from './../patients';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { PatientsService } from '../patients.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { formatDate } from '@angular/common';
+import { PatientsService } from '../patients.service';
 
 @Component({
-  selector: 'app-appointment-registration',
-  templateUrl: './appointment-registration.component.html',
-  styleUrls: ['./appointment-registration.component.css'],
+  selector: 'app-appointments-actions',
+  templateUrl: './appointments-actions.component.html',
+  styleUrls: ['./appointments-actions.component.css'],
 })
-export class AppointmentRegistrationComponent implements OnInit {
-  listPatients: Patients[] = [];
-  filteredPatients: Patients[] = [];
-  isSearch: boolean = false;
-
-  patient: Patients = {
-    identification: {
-      name: '',
-      gender: '',
-      birth: '',
-      cpf: '',
-      rg: '',
-      relationship: '',
-      phone: '',
-      email: '',
-      nationality: '',
-      allergy: '',
-      emergencyContact: '',
-    },
-    insurance: {
-      name: '',
-      number: '',
-      validity: '',
-    },
-    address: {
-      cep: '',
-      city: '',
-      state: '',
-      street: '',
-      number: '',
-      complement: '',
-      neighborhood: '',
-      reference: '',
-    },
-  };
-
+export class AppointmentsActionsComponent {
   appointment: Appointments = {
     id: 0,
     patientIdentification: '',
     patientName: '',
     motive: '',
-    date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-    time: formatDate(new Date(), 'H:mm:ss', 'en'),
+    date: '',
+    time: '',
     description: '',
     medication: '',
     precautions: '',
   };
 
-  constructor(private service: PatientsService, private router: Router) {}
+  constructor(
+    private service: PatientsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.service.listPatients().subscribe((patients) => {
-      this.listPatients = patients;
-      this.filteredPatients = patients;
-    });
-  }
+    localStorage.setItem('session', JSON.stringify('Edição de Consulta'));
 
-  search(e: Event): void {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
-    this.isSearch = true;
-
-    this.filteredPatients = this.listPatients.filter((data: any) => {
-      return (
-        data.identification.name.toLowerCase().includes(value) ||
-        data.identification.phone.toLowerCase().includes(value) ||
-        data.identification.email.toLowerCase().includes(value)
-      );
-    });
-
-    this.filteredPatients.forEach((value) => (this.patient = value));
-  }
-
-  createAppointment() {
-    if (!this.isSearch) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Pesquise um paciente',
-        text: 'Você deve primeiro pesquisar um paciente!',
+    const id = this.route.snapshot.paramMap.get('id');
+    this.service
+      .searchAppointmentById(parseInt(id!))
+      .subscribe((appointment) => {
+        this.appointment = appointment;
       });
-      return;
-    }
+  }
+
+  cancel() {
+    localStorage.setItem('session', JSON.stringify('Listagem de Consulta'));
+    this.router.navigate(['/consults-workflow']);
+  }
+
+  editAppointment() {
     if (this.appointment.motive === '') {
       Swal.fire({
         icon: 'error',
@@ -181,16 +133,26 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       return;
     }
-    this.appointment.patientIdentification = this.patient.identification.cpf;
-    this.appointment.patientName = this.patient.identification.name;
-    this.service.createAppointment(this.appointment).subscribe(() => {
-      localStorage.setItem('session', JSON.stringify('Cadastro de Exames'));
+    this.service.editAppointment(this.appointment).subscribe(() => {
+      localStorage.setItem('session', JSON.stringify('Listagem de Consultas'));
       Swal.fire({
         icon: 'success',
         title: 'OK',
-        text: 'Consulta cadastrada com sucesso!',
+        text: 'Consulta editada com sucesso!',
       });
-      this.router.navigate(['/exam-registration']);
+      this.router.navigate(['/consults-workflow']);
+    });
+  }
+
+  deleteAppointment() {
+    this.service.deleteAppointment(this.appointment.id!).subscribe(() => {
+      localStorage.setItem('session', JSON.stringify('Listagem de Consultas'));
+      Swal.fire({
+        icon: 'success',
+        title: 'OK',
+        text: 'Consulta deletada com sucesso!',
+      });
+      this.router.navigate(['/consults-workflow']);
     });
   }
 }

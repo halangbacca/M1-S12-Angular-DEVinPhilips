@@ -1,98 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { PatientsService } from '../patients.service';
-import { formatDate } from '@angular/common';
 import { Exams } from '../exams';
-import { Patients } from '../patients';
+import { PatientsService } from '../patients.service';
 
 @Component({
-  selector: 'app-exam-registration',
-  templateUrl: './exam-registration.component.html',
-  styleUrls: ['./exam-registration.component.css'],
+  selector: 'app-exams-actions',
+  templateUrl: './exams-actions.component.html',
+  styleUrls: ['./exams-actions.component.css'],
 })
-export class ExamRegistrationComponent implements OnInit {
-  listPatients: Patients[] = [];
-  filteredPatients: Patients[] = [];
-  isSearch: boolean = false;
-
-  patient: Patients = {
-    identification: {
-      name: '',
-      gender: '',
-      birth: '',
-      cpf: '',
-      rg: '',
-      relationship: '',
-      phone: '',
-      email: '',
-      nationality: '',
-      allergy: '',
-      emergencyContact: '',
-    },
-    insurance: {
-      name: '',
-      number: '',
-      validity: '',
-    },
-    address: {
-      cep: '',
-      city: '',
-      state: '',
-      street: '',
-      number: '',
-      complement: '',
-      neighborhood: '',
-      reference: '',
-    },
-  };
-
+export class ExamsActionsComponent {
   exam: Exams = {
     id: 0,
     patientIdentification: '',
     patientName: '',
     name: '',
-    date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-    time: formatDate(new Date(), 'H:mm:ss', 'en'),
+    date: '',
+    time: '',
     type: '',
     lab: '',
     url: '',
     result: '',
   };
 
-  constructor(private service: PatientsService, private router: Router) {}
+  constructor(
+    private service: PatientsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.service.listPatients().subscribe((patients) => {
-      this.listPatients = patients;
-      this.filteredPatients = patients;
+    localStorage.setItem('session', JSON.stringify('Edição de Exame'));
+
+    const id = this.route.snapshot.paramMap.get('id');
+    this.service.searchExamById(parseInt(id!)).subscribe((exam) => {
+      this.exam = exam;
     });
   }
 
-  search(e: Event): void {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
-    this.isSearch = true;
-
-    this.filteredPatients = this.listPatients.filter((data: any) => {
-      return (
-        data.identification.name.toLowerCase().includes(value) ||
-        data.identification.phone.toLowerCase().includes(value) ||
-        data.identification.email.toLowerCase().includes(value)
-      );
-    });
-    this.filteredPatients.forEach((value) => (this.patient = value));
+  cancel() {
+    localStorage.setItem('session', JSON.stringify('Listagem de Exames'));
+    this.router.navigate(['/exams-workflow']);
   }
 
-  createExam() {
-    if (!this.isSearch) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Pesquise um paciente',
-        text: 'Você deve primeiro pesquisar um paciente!',
-      });
-      return;
-    }
+  editExam() {
     if (this.exam.name === '') {
       Swal.fire({
         icon: 'error',
@@ -205,34 +156,26 @@ export class ExamRegistrationComponent implements OnInit {
       });
       return;
     }
-    this.exam.patientIdentification = this.patient.identification.cpf;
-    this.exam.patientName = this.patient.identification.name;
-    this.service.createExam(this.exam).subscribe(() => {
-      localStorage.setItem(
-        'session',
-        JSON.stringify('Listagem de Prontuários')
-      );
+    this.service.editExams(this.exam).subscribe(() => {
+      localStorage.setItem('session', JSON.stringify('Listagem de Exames'));
       Swal.fire({
         icon: 'success',
         title: 'OK',
-        text: 'Exame cadastrado com sucesso!',
+        text: 'Exame editado com sucesso!',
       });
-      this.router.navigate(['/appointment-workflow']);
+      this.router.navigate(['/exams-workflow']);
     });
   }
 
   deleteExam() {
     this.service.deleteExam(this.exam.id!).subscribe(() => {
-      localStorage.setItem(
-        'session',
-        JSON.stringify('Estatísticas e Informações')
-      );
+      localStorage.setItem('session', JSON.stringify('Listagem de Exames'));
       Swal.fire({
         icon: 'success',
         title: 'OK',
         text: 'Exame deletado com sucesso!',
       });
-      this.router.navigate(['/']);
+      this.router.navigate(['/exams-workflow']);
     });
   }
 }

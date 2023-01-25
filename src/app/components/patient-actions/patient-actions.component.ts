@@ -61,6 +61,8 @@ export class PatientActionsComponent {
   ) {}
 
   ngOnInit(): void {
+    localStorage.setItem('session', JSON.stringify('Edição de Paciente'));
+
     const id = this.route.snapshot.paramMap.get('id');
     this.service.searchPatientById(parseInt(id!)).subscribe((patient) => {
       this.patient = patient;
@@ -85,7 +87,8 @@ export class PatientActionsComponent {
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    localStorage.setItem('session', JSON.stringify('Listagem de Prontuários'));
+    this.router.navigate(['/appointment-workflow']);
   }
 
   editPatient() {
@@ -318,7 +321,7 @@ export class PatientActionsComponent {
           title: 'OK',
           text: 'Paciente deletado com sucesso!',
         });
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       });
     } else {
       Swal.fire({

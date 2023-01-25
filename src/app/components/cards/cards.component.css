@@ -9,7 +9,7 @@ h4 {
   position: relative;
   width: 50%;
   left: 250px;
-  bottom: 520px;
+  bottom: 660px;
 }
 
 .card {
@@ -26,7 +26,7 @@ h4 {
   position: relative;
   width: 50%;
   left: 450px;
-  bottom: 520px;
+  bottom: 660px;
   text-align: center;
   margin: 0 0 1em 0;
   gap: 20px;
@@ -49,7 +49,7 @@ h4 {
   position: relative;
   width: 50%;
   left: 450px;
-  bottom: 520px;
+  bottom: 660px;
   text-align: center;
 }
 
@@ -59,7 +59,7 @@ h4 {
   position: relative;
   width: 50%;
   left: 450px;
-  bottom: 520px;
+  bottom: 660px;
   padding: 10px;
   text-align: center;
 }
@@ -69,6 +69,6 @@ h4 {
   position: relative;
   width: 50%;
   left: 450px;
-  bottom: 450px;
+  bottom: 600px;
   text-align: center;
 }

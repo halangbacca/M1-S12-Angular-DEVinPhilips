@@ -1,18 +1,8 @@
 <div class="container">
   <div class="col-md-7 col-lg-8">
-    <h4 class="mb-3">Encontre o paciente:</h4>
-    <div class="search-box">
-      <form class="w-100 me-5" role="search">
-        <input
-          type="search"
-          class="form-control"
-          placeholder="Digite o nome, e-mail ou telefone do paciente"
-          aria-label="Search"
-          (input)="search($event)"
-        />
-      </form>
-    </div>
-    <h4 class="mb-3">Consulta de {{ patient.identification.name }}:</h4>
+    <h4 class="mb-3">
+      Edição de consulta do(a) paciente {{ appointment.patientName }}:
+    </h4>
     <form class="needs-validation" novalidate>
       <div class="row g-3">
         <div class="col-sm-12">
@@ -100,13 +90,15 @@
         </div>
       </div>
 
-      <button class="w-10 btn btn-secondary btn-lg" type="submit">
-        Editar
+      <button class="w-10 btn btn-secondary btn-lg" (click)="cancel()">
+        Cancelar
       </button>
-      <button class="w-10 btn btn-primary btn-lg" (click)="createAppointment()">
+      <button class="w-10 btn btn-primary btn-lg" (click)="editAppointment()">
         Salvar
       </button>
-      <button class="w-10 btn btn-danger btn-lg">Deletar</button>
+      <button class="w-10 btn btn-danger btn-lg" (click)="deleteAppointment()">
+        Deletar
+      </button>
     </form>
   </div>
 </div>

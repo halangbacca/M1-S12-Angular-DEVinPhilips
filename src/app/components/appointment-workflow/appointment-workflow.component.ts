@@ -14,6 +14,8 @@ export class AppointmentWorkflowComponent {
   constructor(private service: PatientsService) {}
 
   ngOnInit(): void {
+    localStorage.setItem('session', JSON.stringify('Listagem de Prontuários'));
+
     this.service.listPatients().subscribe((workflow) => {
       this.workflow = workflow;
       this.filteredPatients = workflow;
@@ -27,7 +29,7 @@ export class AppointmentWorkflowComponent {
     this.filteredPatients = this.workflow.filter((data: any) => {
       return (
         data.identification.name.toLowerCase().includes(value) ||
-        data.id == (value)
+        data.id == value
       );
     });
   }

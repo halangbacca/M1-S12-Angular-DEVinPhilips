@@ -1,5 +1,7 @@
 export interface Exams {
   id?: number;
+  patientIdentification: string;
+  patientName: string;
   name: string;
   date: string;
   time: string;

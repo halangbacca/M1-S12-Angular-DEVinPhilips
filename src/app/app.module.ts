@@ -23,6 +23,10 @@ import { AgePipe } from './components/age.pipe';
 import { PatientActionsComponent } from './components/patient-actions/patient-actions.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ExamsActionsComponent } from './components/exams-actions/exams-actions.component';
+import { AppointmentsActionsComponent } from './components/appointments-actions/appointments-actions.component';
+import { ExamsWorkflowComponent } from './components/exams-workflow/exams-workflow.component';
+import { ConsultsWorkflowComponent } from './components/consults-workflow/consults-workflow.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     PatientActionsComponent,
     CreateUserComponent,
     ForgotPasswordComponent,
+    ExamsActionsComponent,
+    AppointmentsActionsComponent,
+    ExamsWorkflowComponent,
+    ConsultsWorkflowComponent,
   ],
   imports: [
     BrowserModule,
