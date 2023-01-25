@@ -27,6 +27,7 @@ import { ExamsActionsComponent } from './components/exams-actions/exams-actions.
 import { AppointmentsActionsComponent } from './components/appointments-actions/appointments-actions.component';
 import { ExamsWorkflowComponent } from './components/exams-workflow/exams-workflow.component';
 import { ConsultsWorkflowComponent } from './components/consults-workflow/consults-workflow.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ConsultsWorkflowComponent } from './components/consults-workflow/consul
     AppointmentsActionsComponent,
     ExamsWorkflowComponent,
     ConsultsWorkflowComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
