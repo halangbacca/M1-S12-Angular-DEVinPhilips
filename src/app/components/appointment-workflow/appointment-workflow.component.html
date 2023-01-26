@@ -14,14 +14,14 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Registro</th>
+          <th scope="col">ID</th>
           <th scope="col">Nome do paciente</th>
           <th scope="col">Convênio</th>
         </tr>
       </thead>
       <tbody
         *ngFor="let patient of filteredPatients"
-        routerLink="/patient-actions/{{ patient.id }}"
+        routerLink="/patient-workflow/{{ patient.id }}"
       >
         <tr>
           <th scope="row">{{ patient.id }}</th>

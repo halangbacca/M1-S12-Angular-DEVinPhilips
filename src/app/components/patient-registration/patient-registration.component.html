@@ -54,6 +54,7 @@
             id="cpf"
             name="cpf"
             placeholder="Digite o número do CPF do paciente"
+            (blur)="duplicatedPatient()"
             [(ngModel)]="patient.identification.cpf"
           />
         </div>

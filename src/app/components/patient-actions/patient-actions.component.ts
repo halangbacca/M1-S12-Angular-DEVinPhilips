@@ -1,10 +1,11 @@
+import { Appointments } from './../appointments';
+import { Exams } from './../exams';
 import { CepService } from './../cep.service';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Patients } from '../patients';
 import { PatientsService } from '../patients.service';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-patient-actions',
@@ -20,6 +21,12 @@ export class PatientActionsComponent {
   regexCPF = /[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/;
 
   regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  exams: Exams[] = [];
+  filteredExams: Exams[] = [];
+
+  appointments: Appointments[] = [];
+  filteredAppointments: Appointments[] = [];
 
   patient: Patients = {
     id: 0,
@@ -39,7 +46,7 @@ export class PatientActionsComponent {
     insurance: {
       name: '',
       number: '',
-      validity: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+      validity: '',
     },
     address: {
       cep: '',
@@ -67,6 +74,14 @@ export class PatientActionsComponent {
     this.service.searchPatientById(parseInt(id!)).subscribe((patient) => {
       this.patient = patient;
     });
+
+    this.service.listExams().subscribe((exam) => {
+      this.exams = exam;
+    });
+
+    this.service.listAppointments().subscribe((appoointment) => {
+      this.appointments = appoointment;
+    });
   }
 
   consultCep(value: any) {
@@ -89,6 +104,30 @@ export class PatientActionsComponent {
   cancel() {
     localStorage.setItem('session', JSON.stringify('Listagem de Prontuários'));
     this.router.navigate(['/appointment-workflow']);
+  }
+
+  cannotDelete() {
+    this.filteredExams = this.exams.filter((value) => {
+      return (
+        value.patientIdentification
+          .toLowerCase()
+          .includes(this.patient.identification.cpf.toLowerCase()) &&
+        value.patientName
+          .toLowerCase()
+          .includes(this.patient.identification.name.toLowerCase())
+      );
+    });
+
+    this.filteredAppointments = this.appointments.filter((value) => {
+      return (
+        value.patientIdentification
+          .toLowerCase()
+          .includes(this.patient.identification.cpf.toLowerCase()) &&
+        value.patientName
+          .toLowerCase()
+          .includes(this.patient.identification.name.toLowerCase())
+      );
+    });
   }
 
   editPatient() {
@@ -306,30 +345,31 @@ export class PatientActionsComponent {
   }
 
   deletePatient() {
+    this.cannotDelete();
     if (this.patient.id) {
-      // if (
-      //   this.patient.exams.length === 0 &&
-      //   this.patient.appointments.length === 0
-      // ) {
-      this.service.deletePatient(this.patient.id).subscribe(() => {
-        localStorage.setItem(
-          'session',
-          JSON.stringify('Estatísticas e Informações')
-        );
-        Swal.fire({
-          icon: 'success',
-          title: 'OK',
-          text: 'Paciente deletado com sucesso!',
+      if (
+        this.filteredExams.length <= 0 &&
+        this.filteredAppointments.length <= 0
+      ) {
+        this.service.deletePatient(this.patient.id).subscribe(() => {
+          localStorage.setItem(
+            'session',
+            JSON.stringify('Estatísticas e Informações')
+          );
+          Swal.fire({
+            icon: 'success',
+            title: 'OK',
+            text: 'Paciente deletado com sucesso!',
+          });
+          this.router.navigate(['/']);
         });
-        this.router.navigate(['/']);
-      });
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'O(a) paciente possui exames e/ou consultas cadastrados(as) e não pode ser excluído(a)!',
-      });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'O(a) paciente possui exames e/ou consultas cadastrados(as) e não pode ser excluído(a)!',
+        });
+      }
     }
   }
 }
-// }

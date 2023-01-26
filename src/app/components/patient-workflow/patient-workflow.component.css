@@ -1,7 +1,21 @@
-.mat-stepper-vertical {
-  margin-top: 8px;
+.stepper {
+  position: relative;
+  left: 240px;
+  bottom: 640px;
+  width: 80%;
 }
 
-.mat-mdc-form-field {
-  margin-top: 16px;
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #6dabfc;
+}
+
+.link {
+  cursor: pointer;
 }

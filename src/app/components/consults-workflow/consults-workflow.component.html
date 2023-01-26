@@ -14,7 +14,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Registro</th>
+          <th scope="col">ID</th>
+          <th scope="col">Motivo da consulta</th>
           <th scope="col">Nome do paciente</th>
           <th scope="col">CPF</th>
           <th scope="col">Data da consulta</th>
@@ -27,6 +28,7 @@
       >
         <tr>
           <th scope="row">{{ appointment.id }}</th>
+          <td>{{ appointment.motive }}</td>
           <td>{{ appointment.patientName }}</td>
           <td>{{ appointment.patientIdentification }}</td>
           <td>{{ appointment.date }}</td>

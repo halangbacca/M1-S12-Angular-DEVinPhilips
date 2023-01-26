@@ -52,7 +52,7 @@ const routes: Routes = [
     canActivate: [LoginGuard],
   },
   {
-    path: 'patient-workflow',
+    path: 'patient-workflow/:id',
     component: PatientWorkflowComponent,
     canActivate: [LoginGuard],
   },

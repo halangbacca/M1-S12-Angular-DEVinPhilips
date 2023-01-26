@@ -85,6 +85,14 @@ export class ExamRegistrationComponent implements OnInit {
   }
 
   createExam() {
+    if(this.listPatients.length <= 0 ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Cadastre um paciente',
+        text: 'Não há nenhum paciente cadastrado!',
+      });
+      return;
+    }
     if (!this.isSearch) {
       Swal.fire({
         icon: 'error',
@@ -221,18 +229,11 @@ export class ExamRegistrationComponent implements OnInit {
     });
   }
 
-  deleteExam() {
-    this.service.deleteExam(this.exam.id!).subscribe(() => {
-      localStorage.setItem(
-        'session',
-        JSON.stringify('Estatísticas e Informações')
-      );
-      Swal.fire({
-        icon: 'success',
-        title: 'OK',
-        text: 'Exame deletado com sucesso!',
-      });
-      this.router.navigate(['/']);
-    });
+  cancel() {
+    localStorage.setItem(
+      'session',
+      JSON.stringify('Estatísticas e Informações')
+    );
+    this.router.navigate(['/']);
   }
 }

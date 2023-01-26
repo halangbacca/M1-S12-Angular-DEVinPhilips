@@ -85,6 +85,14 @@ export class AppointmentRegistrationComponent implements OnInit {
   }
 
   createAppointment() {
+    if (this.listPatients.length <= 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Cadastre um paciente',
+        text: 'Não há nenhum paciente cadastrado!',
+      });
+      return;
+    }
     if (!this.isSearch) {
       Swal.fire({
         icon: 'error',
@@ -192,5 +200,13 @@ export class AppointmentRegistrationComponent implements OnInit {
       });
       this.router.navigate(['/exam-registration']);
     });
+  }
+
+  cancel() {
+    localStorage.setItem(
+      'session',
+      JSON.stringify('Estatísticas e Informações')
+    );
+    this.router.navigate(['/']);
   }
 }

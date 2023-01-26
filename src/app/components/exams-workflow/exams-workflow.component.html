@@ -14,7 +14,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Registro</th>
+          <th scope="col">ID</th>
+          <th scope="col">Nome do exame</th>
           <th scope="col">Nome do paciente</th>
           <th scope="col">CPF</th>
           <th scope="col">Data do exame</th>
@@ -27,6 +28,7 @@
       >
         <tr>
           <th scope="row">{{ exam.id }}</th>
+          <td>{{ exam.name }}</td>
           <td>{{ exam.patientName }}</td>
           <td>{{ exam.patientIdentification }}</td>
           <td>{{ exam.date }}</td>

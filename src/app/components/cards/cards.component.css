@@ -19,13 +19,14 @@ h4 {
   padding: 0.6em;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transition: 0.4s;
+  margin-bottom: 20px;
 }
 
 .card-group {
   margin-top: 20px;
   position: relative;
   width: 50%;
-  left: 450px;
+  left: 420px;
   bottom: 660px;
   text-align: center;
   margin: 0 0 1em 0;
@@ -48,7 +49,7 @@ h4 {
   margin-top: 20px;
   position: relative;
   width: 50%;
-  left: 450px;
+  left: 420px;
   bottom: 660px;
   text-align: center;
 }
@@ -58,7 +59,7 @@ h4 {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: relative;
   width: 50%;
-  left: 450px;
+  left: 420px;
   bottom: 660px;
   padding: 10px;
   text-align: center;
@@ -68,7 +69,7 @@ h4 {
   margin-top: 20px;
   position: relative;
   width: 50%;
-  left: 450px;
+  left: 420px;
   bottom: 600px;
   text-align: center;
 }

@@ -20,6 +20,10 @@ export class PatientRegistrationComponent implements OnInit {
 
   regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+  filterPatients: Patients[] = [];
+
+  isDuplicated = false;
+
   patient: Patients = {
     id: 0,
     identification: {
@@ -58,7 +62,11 @@ export class PatientRegistrationComponent implements OnInit {
     private cep: CepService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.service.listPatients().subscribe((patients) => {
+      this.filterPatients = patients;
+    });
+  }
 
   consultCep(value: any) {
     this.cep.search(value).subscribe((data) => this.populateForm(data));
@@ -77,12 +85,34 @@ export class PatientRegistrationComponent implements OnInit {
       (this.patient.address.state = data.uf);
   }
 
+  duplicatedPatient() {
+    this.filterPatients.find((value) => {
+      if (this.patient.identification.cpf.includes(value.identification.cpf)) {
+        this.isDuplicated = true;
+        Swal.fire({
+          icon: 'error',
+          title: 'Paciente já cadastrado',
+          text: 'O paciente já está cadastrado!',
+        });
+        return;
+      }
+    });
+  }
+
   createPatient() {
+    if (this.isDuplicated) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Paciente já cadastrado',
+        text: 'O paciente já está cadastrado!',
+      });
+      return;
+    }
     if (this.patient.identification.name === '') {
       Swal.fire({
         icon: 'error',
         title: 'Nome',
-        text: 'Digite o seu nome completo!',
+        text: 'Digite o nome completo do paciente!',
       });
       return;
     }
@@ -106,7 +136,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Gênero',
-        text: 'Insira o seu gênero!',
+        text: 'Insira o gênero do paciente!',
       });
       return;
     }
@@ -114,7 +144,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Data de Nascimento',
-        text: 'Insira a sua data de nascimento!',
+        text: 'Insira a data de nascimento do paciente!',
       });
       return;
     }
@@ -130,7 +160,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'CPF',
-        text: 'Insira o número do seu CPF!',
+        text: 'Insira o número do CPF do paciente!',
       });
       return;
     }
@@ -146,7 +176,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Identidade',
-        text: 'Insira o número da sua identidade!',
+        text: 'Insira o número de identidade do paciente!',
       });
       return;
     }
@@ -162,7 +192,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Estado civil',
-        text: 'Insira o seu estado civil!',
+        text: 'Insira o estado civil do paciente!',
       });
       return;
     }
@@ -170,7 +200,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Telefone',
-        text: 'Insira seu telefone!',
+        text: 'Insira o telefone do paciente!',
       });
       return;
     }
@@ -196,7 +226,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Naturalidade',
-        text: 'Insira a sua naturalidade!',
+        text: 'Insira a naturalidade do paciente!',
       });
       return;
     }
@@ -220,7 +250,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Contato de emergência',
-        text: 'Insira o número de telefone do seu contato de emergência!',
+        text: 'Insira o contato de emergência do paciente!',
       });
       return;
     }
@@ -236,7 +266,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'CEP',
-        text: 'Insira o CEP da sua rua!',
+        text: 'Insira o CEP do paciente!',
       });
       return;
     }
@@ -244,7 +274,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Cidade',
-        text: 'Insira o nome da sua cidade!',
+        text: 'Insira o nome da cidade de residência do paciente!',
       });
       return;
     }
@@ -252,7 +282,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Estado',
-        text: 'Insira o estado de residência!',
+        text: 'Insira o estado de residência do paciente!',
       });
       return;
     }
@@ -260,7 +290,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Logradouro',
-        text: 'Insira o nome da sua rua!',
+        text: 'Insira o nome da rua do paciente!',
       });
       return;
     }
@@ -268,7 +298,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Número da casa',
-        text: 'Insira o número da sua casa!',
+        text: 'Insira o número da casa do paciente!',
       });
       return;
     }
@@ -276,7 +306,7 @@ export class PatientRegistrationComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Bairro',
-        text: 'Insira o nome do seu bairro!',
+        text: 'Insira o nome do bairro do paciente!',
       });
       return;
     }
@@ -293,6 +323,10 @@ export class PatientRegistrationComponent implements OnInit {
   }
 
   cancel() {
+    localStorage.setItem(
+      'session',
+      JSON.stringify('Estatísticas e Informações')
+    );
     this.router.navigate(['/']);
   }
 }

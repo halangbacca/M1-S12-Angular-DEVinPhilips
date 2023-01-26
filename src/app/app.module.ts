@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,6 +59,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FormsModule,
     SweetAlert2Module,
+    MatStepperModule,
   ],
   providers: [PatientsService, LoginGuard],
   bootstrap: [AppComponent],
