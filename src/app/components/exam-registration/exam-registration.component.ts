@@ -225,7 +225,7 @@ export class ExamRegistrationComponent implements OnInit {
         title: 'OK',
         text: 'Exame cadastrado com sucesso!',
       });
-      this.router.navigate(['/appointment-workflow']);
+      this.router.navigate(['/listagem-de-prontuarios']);
     });
   }
 

@@ -40,7 +40,7 @@ export class ExamsActionsComponent {
 
   cancel() {
     localStorage.setItem('session', JSON.stringify('Listagem de Exames'));
-    this.router.navigate(['/exams-workflow']);
+    this.router.navigate(['/listagem-de-exames']);
   }
 
   editExam() {
@@ -163,7 +163,7 @@ export class ExamsActionsComponent {
         title: 'OK',
         text: 'Exame editado com sucesso!',
       });
-      this.router.navigate(['/exams-workflow']);
+      this.router.navigate(['/listagem-de-exames']);
     });
   }
 
@@ -175,7 +175,7 @@ export class ExamsActionsComponent {
         title: 'OK',
         text: 'Exame deletado com sucesso!',
       });
-      this.router.navigate(['/exams-workflow']);
+      this.router.navigate(['/listagem-de-exames']);
     });
   }
 }

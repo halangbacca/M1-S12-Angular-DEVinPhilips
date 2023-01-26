@@ -24,7 +24,7 @@
       </thead>
       <tbody
         *ngFor="let appointment of filteredAppointments"
-        routerLink="/appointments-actions/{{ appointment.id }}"
+        routerLink="/editar-consulta/{{ appointment.id }}"
       >
         <tr>
           <th scope="row">{{ appointment.id }}</th>

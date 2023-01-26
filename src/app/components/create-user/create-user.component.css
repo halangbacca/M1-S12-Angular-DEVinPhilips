@@ -20,7 +20,7 @@
 .container img {
   position: relative;
   width: 500px;
-  right: 400px;
+  right: 340px;
   top: 50px;
 }
 
@@ -34,7 +34,7 @@
 .vl {
   position: relative;
   bottom: -60px;
-  right: 360px;
+  right: 310px;
   border-left: 2px solid black;
   height: 400px;
 }

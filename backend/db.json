@@ -73,18 +73,6 @@
   ],
   "exams": [
     {
-      "id": 2,
-      "patientIdentification": "11111111111",
-      "patientName": "Halan Germano Bacca",
-      "name": "Teste de teste",
-      "date": "2023-01-24",
-      "time": "20:02:44",
-      "type": "llllllllllllllll",
-      "lab": "lllllllllllllll",
-      "url": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
-      "result": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
-    },
-    {
       "id": 3,
       "patientIdentification": "555555555555",
       "patientName": "Luciana Lamim",

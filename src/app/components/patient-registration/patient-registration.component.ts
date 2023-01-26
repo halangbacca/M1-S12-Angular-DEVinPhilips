@@ -318,7 +318,7 @@ export class PatientRegistrationComponent implements OnInit {
         title: 'OK',
         text: 'Paciente cadastrado com sucesso!',
       });
-      this.router.navigate(['/appointment-registration']);
+      this.router.navigate(['/cadastro-de-consulta']);
     });
   }
 

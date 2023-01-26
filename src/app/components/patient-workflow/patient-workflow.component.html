@@ -6,7 +6,7 @@
       <h5>Convênio: {{ patient.insurance.name }}</h5>
       <h5>Alergias: {{ patient.identification.allergy }}</h5>
     </div>
-    <button routerLink="/patient-actions/{{ patient.id }}">Editar paciente</button>
+    <button routerLink="/editar-paciente/{{ patient.id }}">Editar paciente</button>
     <button matStepperNext>Próximo</button>
   </mat-step>
   <mat-step [completed]="false" label="Consultas">
@@ -27,7 +27,7 @@
         <tbody *ngFor="let appointment of filteredAppointments">
           <tr>
             <th scope="row">
-              <button routerLink="/appointments-actions/{{ appointment.id }}">
+              <button routerLink="/editar-consulta/{{ appointment.id }}">
                 Editar
               </button>
             </th>
@@ -63,7 +63,7 @@
       <tbody *ngFor="let exam of filteredExams">
         <tr>
           <th scope="row">
-            <button routerLink="/exams-actions/{{ exam.id }}">Editar</button>
+            <button routerLink="/editar-exame/{{ exam.id }}">Editar</button>
           </th>
           <td>{{ exam.id }}</td>
           <td>{{ exam.name }}</td>

@@ -41,32 +41,32 @@ export class SidebarComponent implements OnInit {
 
   examRegistration() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[4]));
-    this.router.navigate(['/exam-registration']);
+    this.router.navigate(['/cadastro-de-exame']);
   }
 
   listExams() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[7]));
-    this.router.navigate(['/exams-workflow']);
+    this.router.navigate(['/listagem-de-exames']);
   }
 
   patientRegistration() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[1]));
-    this.router.navigate(['/patient-registration']);
+    this.router.navigate(['/cadastro-de-paciente']);
   }
 
   createAppointment() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[3]));
-    this.router.navigate(['/appointment-registration']);
+    this.router.navigate(['/cadastro-de-consulta']);
   }
 
   listAppointments() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[8]));
-    this.router.navigate(['/consults-workflow']);
+    this.router.navigate(['/listagem-de-consultas']);
   }
 
   appointmentWorkflow() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[5]));
-    this.router.navigate(['/appointment-workflow']);
+    this.router.navigate(['/listagem-de-prontuarios']);
   }
 
   logout() {

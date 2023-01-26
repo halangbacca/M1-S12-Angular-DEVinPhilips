@@ -198,7 +198,7 @@ export class AppointmentRegistrationComponent implements OnInit {
         title: 'OK',
         text: 'Consulta cadastrada com sucesso!',
       });
-      this.router.navigate(['/exam-registration']);
+      this.router.navigate(['/cadastro-de-exame']);
     });
   }
 

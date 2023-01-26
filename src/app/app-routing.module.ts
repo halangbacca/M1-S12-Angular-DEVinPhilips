@@ -25,66 +25,66 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
 
-  { path: 'create-user', component: CreateUserComponent },
+  { path: 'cadastro', component: CreateUserComponent },
 
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'recuperar-senha', component: ForgotPasswordComponent },
 
   {
-    path: 'patient-registration',
+    path: 'cadastro-de-paciente',
     component: PatientRegistrationComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'exam-registration',
+    path: 'cadastro-de-exame',
     component: ExamRegistrationComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'appointment-registration',
+    path: 'cadastro-de-consulta',
     component: AppointmentRegistrationComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'appointment-workflow',
+    path: 'listagem-de-prontuarios',
     component: AppointmentWorkflowComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'consults-workflow',
+    path: 'listagem-de-consultas',
     component: ConsultsWorkflowComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'exams-workflow',
+    path: 'listagem-de-exames',
     component: ExamsWorkflowComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'patient-workflow/:id',
+    path: 'prontuario-do-paciente/:id',
     component: PatientWorkflowComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'patient-actions/:id',
+    path: 'editar-paciente/:id',
     component: PatientActionsComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'exams-actions/:id',
+    path: 'editar-exame/:id',
     component: ExamsActionsComponent,
     canActivate: [LoginGuard],
   },
 
   {
-    path: 'appointments-actions/:id',
+    path: 'editar-consulta/:id',
     component: AppointmentsActionsComponent,
     canActivate: [LoginGuard],
   },

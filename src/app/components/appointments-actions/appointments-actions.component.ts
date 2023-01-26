@@ -41,7 +41,7 @@ export class AppointmentsActionsComponent {
 
   cancel() {
     localStorage.setItem('session', JSON.stringify('Listagem de Consulta'));
-    this.router.navigate(['/consults-workflow']);
+    this.router.navigate(['/listagem-de-consultas']);
   }
 
   editAppointment() {
@@ -140,7 +140,7 @@ export class AppointmentsActionsComponent {
         title: 'OK',
         text: 'Consulta editada com sucesso!',
       });
-      this.router.navigate(['/consults-workflow']);
+      this.router.navigate(['/listagem-de-consultas']);
     });
   }
 
@@ -152,7 +152,7 @@ export class AppointmentsActionsComponent {
         title: 'OK',
         text: 'Consulta deletada com sucesso!',
       });
-      this.router.navigate(['/consults-workflow']);
+      this.router.navigate(['/listagem-de-consultas']);
     });
   }
 }
