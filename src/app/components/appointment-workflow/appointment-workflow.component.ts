@@ -8,7 +8,7 @@ import { PatientsService } from '../patients.service';
   styleUrls: ['./appointment-workflow.component.css'],
 })
 export class AppointmentWorkflowComponent {
-  workflow: Patients[] = [];
+  patients: Patients[] = [];
   filteredPatients: Patients[] = [];
 
   constructor(private service: PatientsService) {}
@@ -16,9 +16,9 @@ export class AppointmentWorkflowComponent {
   ngOnInit(): void {
     localStorage.setItem('session', JSON.stringify('Listagem de Prontuários'));
 
-    this.service.listPatients().subscribe((workflow) => {
-      this.workflow = workflow;
-      this.filteredPatients = workflow;
+    this.service.listPatients().subscribe((patient) => {
+      this.patients = patient;
+      this.filteredPatients = patient;
     });
   }
 
@@ -26,7 +26,7 @@ export class AppointmentWorkflowComponent {
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
-    this.filteredPatients = this.workflow.filter((data: any) => {
+    this.filteredPatients = this.patients.filter((data: any) => {
       return (
         data.identification.name.toLowerCase().includes(value) ||
         data.id == value
