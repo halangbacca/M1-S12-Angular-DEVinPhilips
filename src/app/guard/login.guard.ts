@@ -23,10 +23,10 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.authServer.authUser()) {
+    if (this.authServer.autenticated) {
       return true;
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['login']);
     return false;
   }
 }

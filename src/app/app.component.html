@@ -1,12 +1,6 @@
-<!-- <div *ngIf="autenticated; else noAutenticated" class="autenticated">
-  <app-login></app-login>
-</div> -->
-
-<!-- <app-patient-workflow></app-patient-workflow> -->
-
-<!-- <ng-template #noAutenticated> -->
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
-<!-- </ng-template> -->
+<main *ngIf="autenticated === true; else noAutenticated">
+  <app-home></app-home>
+</main>
+<ng-template #noAutenticated>
+  <router-outlet></router-outlet>
+</ng-template>

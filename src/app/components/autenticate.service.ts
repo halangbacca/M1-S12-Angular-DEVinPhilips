@@ -4,9 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AutenticateService {
-  autenticated: boolean = false;
+  autenticated = false;
 
-  authUser(): any {
-    console.log(this.autenticated = !this.autenticated);
+  authUser() {
+    this.autenticated = true;
+  }
+
+  logoutUser(){
+    this.autenticated = false;
   }
 }

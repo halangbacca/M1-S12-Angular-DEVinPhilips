@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AutenticateService
-    ) {}
+  ) {}
 
   ngOnInit(): void {}
 
@@ -27,12 +27,12 @@ export class HeaderComponent implements OnInit {
     this.currentUser = JSON.parse(this.user);
 
     this.session = localStorage.getItem('session');
-    console.log(this.currentSession = JSON.parse(this.session));
+    this.currentSession = JSON.parse(this.session);
   }
 
   logout() {
     localStorage.clear();
-    this.authService.authUser();
+    this.authService.logoutUser();
     Swal.fire({
       icon: 'success',
       title: 'Volte logo!',

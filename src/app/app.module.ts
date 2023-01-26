@@ -29,6 +29,7 @@ import { AppointmentsActionsComponent } from './components/appointments-actions/
 import { ExamsWorkflowComponent } from './components/exams-workflow/exams-workflow.component';
 import { ConsultsWorkflowComponent } from './components/consults-workflow/consults-workflow.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ExamsWorkflowComponent,
     ConsultsWorkflowComponent,
     FooterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

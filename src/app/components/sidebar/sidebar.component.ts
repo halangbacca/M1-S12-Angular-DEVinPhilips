@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
     'Listagem de Prontuários',
     'Prontuário do Paciente',
     'Listagem de Exames',
-    'Listagem de Consultas'
+    'Listagem de Consultas',
   ];
 
   constructor(private router: Router, private authServer: AutenticateService) {}
@@ -71,7 +71,7 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.authServer.authUser();
+    this.authServer.logoutUser();
     Swal.fire({
       icon: 'success',
       title: 'Volte logo!',

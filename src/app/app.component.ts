@@ -7,12 +7,18 @@ import { AutenticateService } from './components/autenticate.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  // autenticated: boolean = false;
+  autenticated = false;
   title = 'labmedical';
 
   constructor(private authService: AutenticateService) {}
 
-  ngOnInit() {
-    // console.log(this.autenticated = this.authService.authUser());
+  ngOnInit() {}
+
+  ngDoCheck() {
+    if (this.authService.autenticated) {
+      this.autenticated = true;
+    } else {
+      this.autenticated = false;
+    }
   }
 }

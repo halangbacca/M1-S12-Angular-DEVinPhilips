@@ -78,7 +78,6 @@ export class LoginComponent implements OnInit {
         timerProgressBar: true,
       });
       this.authServer.authUser();
-      localStorage.setItem('session', 'Estatísticas e Informações');
       this.router.navigate(['/']);
     } else {
       Swal.fire({
