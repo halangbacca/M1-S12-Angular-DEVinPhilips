@@ -41,6 +41,7 @@ export class PatientActionsComponent {
       email: '',
       nationality: '',
       allergy: '',
+      care: '',
       emergencyContact: '',
     },
     insurance: {

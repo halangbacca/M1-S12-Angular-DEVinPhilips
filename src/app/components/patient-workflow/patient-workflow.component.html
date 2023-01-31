@@ -4,7 +4,9 @@
       <h3>{{ patient.identification.name }}</h3>
       <h5>Idade: {{ patient.identification.birth | age }}</h5>
       <h5>Convênio: {{ patient.insurance.name }}</h5>
+      <h5>Contato de emergência: {{ patient.identification.emergencyContact }}</h5>
       <h5>Alergias: {{ patient.identification.allergy }}</h5>
+      <h5>Cuidados específicos: {{ patient.identification.care }}</h5>
     </div>
     <button routerLink="/editar-paciente/{{ patient.id }}">Editar paciente</button>
     <button matStepperNext>Próximo</button>

@@ -11,6 +11,7 @@ export interface Patients {
     email: string;
     nationality: string;
     allergy: string;
+    care: string;
     emergencyContact: string;
   };
   insurance: {

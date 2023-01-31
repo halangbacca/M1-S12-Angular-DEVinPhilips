@@ -37,6 +37,7 @@ export class PatientRegistrationComponent implements OnInit {
       email: '',
       nationality: '',
       allergy: '',
+      care: '',
       emergencyContact: '',
     },
     insurance: {

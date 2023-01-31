@@ -7,14 +7,14 @@
   gap: 20px;
 }
 
+.container label {
+  font-weight: 500;
+}
+
 h4 {
   position: relative;
   right: 470px;
   text-align: center;
-}
-
-.container label {
-  font-weight: 500;
 }
 
 button {

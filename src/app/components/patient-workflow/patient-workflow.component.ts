@@ -24,6 +24,7 @@ export class PatientWorkflowComponent {
       email: '',
       nationality: '',
       allergy: '',
+      care: '',
       emergencyContact: '',
     },
     insurance: {

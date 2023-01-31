@@ -28,6 +28,7 @@ export class ExamRegistrationComponent implements OnInit {
       email: '',
       nationality: '',
       allergy: '',
+      care: '',
       emergencyContact: '',
     },
     insurance: {

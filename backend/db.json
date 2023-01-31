@@ -21,7 +21,8 @@
         "email": "email@exemplo.com",
         "nationality": "Itajaiense",
         "allergy": "Picada de inseto",
-        "emergencyContact": "(47) 99720-0499"
+        "emergencyContact": "(47) 99720-0499",
+        "care": "Nenhum cuidado específico"
       },
       "insurance": {
         "name": "SUS",

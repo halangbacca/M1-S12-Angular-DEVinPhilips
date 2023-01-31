@@ -30,6 +30,7 @@
             <option>Mulher cisgênero</option>
             <option>Homem transgênero</option>
             <option>Mulher transgênero</option>
+            <option>Bão-binário</option>
             <option>Outros</option>
           </select>
         </div>
@@ -124,7 +125,7 @@
           />
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <label for="allergy" class="form-label">Alergias:</label>
           <input
             type="text"
@@ -136,7 +137,19 @@
           />
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-12">
+          <label for="care" class="form-label">Cuidados específicos:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="care"
+            name="care"
+            placeholder="Informe se o paciente possui cuidados específicos"
+            [(ngModel)]="patient.identification.care"
+          />
+        </div>
+
+        <div class="col-sm-12">
           <label for="emergency-contact" class="form-label"
             >Contato de emergência:</label
           >

@@ -28,6 +28,7 @@ export class AppointmentRegistrationComponent implements OnInit {
       email: '',
       nationality: '',
       allergy: '',
+      care: '',
       emergencyContact: '',
     },
     insurance: {
