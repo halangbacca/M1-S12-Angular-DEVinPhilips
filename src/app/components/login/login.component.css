@@ -2,16 +2,6 @@
   display: grid;
 }
 
-.create-account {
-  position: relative;
-  top: -50px;
-  right: -280px;
-}
-
-.create-account button {
-  padding: 0%;
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -20,7 +10,7 @@
 .container img {
   position: relative;
   width: 500px;
-  right: 350px;
+  right: 313px;
   top: 50px;
 }
 
@@ -34,7 +24,7 @@
 .vl {
   position: relative;
   bottom: -60px;
-  right: 320px;
+  right: 283px;
   border-left: 2px solid black;
   height: 400px;
 }
@@ -54,6 +44,24 @@
   cursor: pointer;
 }
 
+.create-account {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  position: relative;
+  top: -50px;
+  right: -280px;
+}
+
 .create-account > p {
-  cursor: pointer;
+  margin-top: 10px;
+}
+
+.create-account > button {
+  justify-items: center;
+  margin-left: 10px;
+  align-items: center;
+  padding: 8px;
+  height: 10%;
 }

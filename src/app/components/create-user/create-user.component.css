@@ -2,16 +2,6 @@
   display: grid;
 }
 
-.create-account {
-  position: relative;
-  top: -50px;
-  right: -280px;
-}
-
-.create-account button {
-  padding: 0%;
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -49,6 +39,24 @@
   font-weight: 500;
 }
 
-.create-account {
-  cursor: pointer;
+.create-user {
+  position: relative;
+  top: -50px;
+  right: -280px;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.create-user > p {
+  margin-top: 10px;
+}
+
+.create-user > button {
+  justify-items: center;
+  margin-left: 10px;
+  align-items: center;
+  padding: 8px;
+  height: 10%;
 }
