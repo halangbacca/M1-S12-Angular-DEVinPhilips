@@ -1,4 +1,4 @@
-# Labmedical
+# LABMedical
 
 - Software para gestão de inventário médico, desenvolvido utilizando HTML5, CSS3, JavaScript, TypeScript, Angular (15.1.1), Bootstrap (5.3.0-alpha1), Angular Material e JSON Server.
 
