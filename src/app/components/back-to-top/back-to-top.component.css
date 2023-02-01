@@ -10,6 +10,8 @@
   bottom: 40px;
   right: 50px;
 
+  cursor: pointer;
+
   text-decoration: none;
   text-align: center;
   line-height: 50px;
