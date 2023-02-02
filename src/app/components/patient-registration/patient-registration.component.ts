@@ -22,8 +22,6 @@ export class PatientRegistrationComponent implements OnInit {
 
   filterPatients: Patients[] = [];
 
-  isDuplicated = false;
-
   patient: Patients = {
     id: 0,
     identification: {
@@ -89,26 +87,19 @@ export class PatientRegistrationComponent implements OnInit {
   duplicatedPatient() {
     this.filterPatients.find((value) => {
       if (this.patient.identification.cpf.includes(value.identification.cpf)) {
-        this.isDuplicated = true;
         Swal.fire({
           icon: 'error',
           title: 'Paciente já cadastrado',
           text: 'O paciente já está cadastrado!',
         });
         return;
+      } else {
+        return;
       }
     });
   }
 
   createPatient() {
-    if (this.isDuplicated) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Paciente já cadastrado',
-        text: 'O paciente já está cadastrado!',
-      });
-      return;
-    }
     if (this.patient.identification.name === '') {
       Swal.fire({
         icon: 'error',

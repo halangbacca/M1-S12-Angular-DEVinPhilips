@@ -37,6 +37,7 @@
       name="email"
       id="email"
       placeholder="Digite o seu e-mail"
+      (blur)="duplicatedUser()"
       [(ngModel)]="user.email"
     />
   </div>

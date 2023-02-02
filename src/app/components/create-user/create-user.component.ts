@@ -17,8 +17,18 @@ export class CreateUserComponent {
     password: '',
   };
 
+  users: Users[] = [];
+
   regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   newPassword = '';
+
+  constructor(private service: PatientsService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.service.listUsers().subscribe((users) => {
+      this.users = users;
+    });
+  }
 
   confirmPassword() {
     if (this.user.name === '') {
@@ -81,9 +91,20 @@ export class CreateUserComponent {
     }
   }
 
-  constructor(private service: PatientsService, private router: Router) {}
-
-  ngOnInit(): void {}
+  duplicatedUser() {
+    this.users.find((user) => {
+      if (this.user.email.includes(user.email)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuário já cadastrado',
+          text: 'O usuário já está cadastrado!',
+        });
+        return;
+      } else {
+        return;
+      }
+    });
+  }
 
   createUser() {
     this.service.createUser(this.user).subscribe(() => {
