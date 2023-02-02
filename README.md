@@ -21,7 +21,7 @@
 
 ## Adicionais
 
-- Adicionado delay de 200ms no JSON Server para a exibição correta da animação de carregamento
+- Adicionado delay de 200 ms no JSON Server para a exibição correta da animação de carregamento
 - Utilização de JSON Server para armazenamento dos dados
 - Utilização de alguns componentes do Angular Material
 - Botão que retorna o usuário ao início da página

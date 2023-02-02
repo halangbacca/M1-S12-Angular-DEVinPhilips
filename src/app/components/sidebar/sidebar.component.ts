@@ -1,4 +1,3 @@
-import { LoaderService } from './../loader.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -31,13 +30,19 @@ export class SidebarComponent implements OnInit {
     this.userObj = JSON.parse(this.user);
   }
 
-  collapse() {
-    // Implementar a função de collapse sidebar
-  }
-
   home() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[0]));
     this.router.navigate(['/']);
+  }
+
+  openNav() {
+    let sidebar = document.getElementById('sidebar');
+    sidebar!.setAttribute('style', 'width: 230px');
+  }
+
+  closeNav() {
+    let sidebar = document.getElementById('sidebar');
+    sidebar!.setAttribute('style', 'width: 0px');
   }
 
   examRegistration() {
