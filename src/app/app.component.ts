@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticateService } from './components/autenticate.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +9,13 @@ export class AppComponent implements OnInit {
   autenticated = false;
   title = 'labmedical';
 
-  constructor(private authService: AutenticateService) {}
+  constructor() {}
 
   ngOnInit() {}
 
   ngDoCheck() {
-    if (this.authService.autenticated) {
+    let autenticated = localStorage.getItem('autenticated');
+    if (autenticated === 'true') {
       this.autenticated = true;
     } else {
       this.autenticated = false;

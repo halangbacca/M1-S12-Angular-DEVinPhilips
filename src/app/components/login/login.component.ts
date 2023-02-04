@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       (user) => user.email == email && user.password == password
     );
     if (existentUser) {
-      localStorage.setItem('user', JSON.stringify(existentUser));
+      localStorage.setItem('user', JSON.stringify(existentUser.name));
       return true;
     }
     return false;

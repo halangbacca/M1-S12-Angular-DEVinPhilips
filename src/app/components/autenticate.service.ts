@@ -8,9 +8,11 @@ export class AutenticateService {
 
   authUser() {
     this.autenticated = true;
+    localStorage.setItem('autenticated', JSON.stringify(this.autenticated));
   }
 
-  logoutUser(){
+  logoutUser() {
     this.autenticated = false;
+    localStorage.setItem('autenticated', JSON.stringify(this.autenticated));
   }
 }
