@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    let autenticated = localStorage.getItem('autenticated');
+    if (autenticated === 'true') {
+      this.router.navigate(['']);
+    }
+
     this.service.listUsers().subscribe((users) => {
       return (this.loginUsers = users);
     });

@@ -35,16 +35,6 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  openNav() {
-    let sidebar = document.getElementById('sidebar');
-    sidebar!.setAttribute('style', 'width: 230px');
-  }
-
-  closeNav() {
-    let sidebar = document.getElementById('sidebar');
-    sidebar!.setAttribute('style', 'width: 0px');
-  }
-
   examRegistration() {
     localStorage.setItem('session', JSON.stringify(this.currentSession[4]));
     this.router.navigate(['/cadastro-de-exame']);

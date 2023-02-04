@@ -24,6 +24,7 @@
 ## Adicionais
 
 - Adicionado delay de 200 ms no JSON Server para a exibição correta da animação de carregamento.
+- Criação de pipe que calcula a idade do paciente com base na data de nascimento informada.
 - Utilização dos componentes spinner e stepper do Angular Material.
 - Utilização de JSON Server para armazenamento dos dados.
 - Impede o cadastro de pacientes e usuários duplicados.
