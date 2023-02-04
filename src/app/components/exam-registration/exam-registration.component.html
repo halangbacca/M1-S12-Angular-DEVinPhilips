@@ -13,6 +13,9 @@
       </form>
     </div>
     <h4 class="mb-3">Exame de {{ patient.identification.name }}:</h4>
+    <h5>CPF: {{ patient.identification.cpf }}</h5>
+    <h5>Data de nascimento: {{ patient.identification.birth }}</h5>
+    <h5>Gênero: {{ patient.identification.gender }}</h5>
     <form class="needs-validation" novalidate>
       <div class="row g-3">
         <div class="col-sm-12">
