@@ -13,7 +13,7 @@
   </mat-step>
   <mat-step [completed]="false" label="Consultas">
     <div>
-      <table class="table">
+      <table class="table" *ngIf="appointments.length > 0; else noAppointments">
         <thead>
           <tr>
             <th scope="col">Edição</th>
@@ -48,7 +48,7 @@
     </div>
   </mat-step>
   <mat-step [completed]="false" label="Exames">
-    <table class="table">
+    <table class="table" *ngIf="exams.length > 0; else noExams">
       <thead>
         <tr>
           <th scope="col">Edição</th>
@@ -88,3 +88,15 @@
     <button matStepperPrevious>Anterior</button>
   </mat-step>
 </mat-vertical-stepper>
+
+<ng-template #noAppointments>
+  <div class="noAppointments">
+    <p>Ainda não há consultas cadastradas!</p>
+  </div>
+</ng-template>
+
+<ng-template #noExams>
+  <div class="noExams">
+    <p>Ainda não há exames cadastrados!</p>
+  </div>
+</ng-template>

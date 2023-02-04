@@ -11,7 +11,7 @@
         />
       </form>
     </div>
-    <table class="table">
+    <table class="table" *ngIf="exams.length > 0; else noExams">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -38,3 +38,9 @@
     </table>
   </div>
 </div>
+
+<ng-template #noExams>
+  <div class="noExams">
+    <p>Ainda não há exames cadastrados!</p>
+  </div>
+</ng-template>

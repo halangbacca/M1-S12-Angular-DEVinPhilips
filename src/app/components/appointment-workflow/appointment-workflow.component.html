@@ -11,7 +11,7 @@
         />
       </form>
     </div>
-    <table class="table">
+    <table class="table" *ngIf="patients.length > 0; else noPatients">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -32,3 +32,9 @@
     </table>
   </div>
 </div>
+
+<ng-template #noPatients>
+  <div class="noPatients">
+    <p>Ainda não há pacientes cadastrados!</p>
+  </div>
+</ng-template>
