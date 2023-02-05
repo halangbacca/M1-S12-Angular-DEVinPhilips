@@ -14,6 +14,7 @@ export class AppointmentsActionsComponent {
     id: 0,
     patientIdentification: '',
     patientName: '',
+    doctorName: '',
     motive: '',
     date: '',
     time: '',
@@ -133,6 +134,9 @@ export class AppointmentsActionsComponent {
       });
       return;
     }
+    let doctorName = localStorage.getItem('user');
+    this.appointment.doctorName = JSON.parse(doctorName!);
+    
     this.service.editAppointment(this.appointment).subscribe(() => {
       localStorage.setItem('session', JSON.stringify('Listagem de Consultas'));
       Swal.fire({

@@ -336,6 +336,7 @@ export class PatientActionsComponent {
     }
 
     this.service.editPatient(this.patient).subscribe(() => {
+      localStorage.setItem('session', JSON.stringify('Estatísticas e Informações'));
       Swal.fire({
         icon: 'success',
         title: 'OK',

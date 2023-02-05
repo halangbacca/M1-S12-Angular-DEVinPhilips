@@ -45,10 +45,7 @@ export class PatientWorkflowComponent {
   };
 
   exams: Exams[] = [];
-  filteredExams: Exams[] = [];
-
   appointments: Appointments[] = [];
-  filteredAppointments: Appointments[] = [];
 
   constructor(
     private service: PatientsService,
@@ -69,30 +66,20 @@ export class PatientWorkflowComponent {
     this.service.listExams().subscribe((exam) => {
       this.exams = exam;
 
-      this.filteredExams = this.exams.filter((value) => {
-        return (
-          value.patientIdentification
-            .toLowerCase()
-            .includes(this.patient.identification.cpf.toLowerCase()) &&
-          value.patientName
-            .toLowerCase()
-            .includes(this.patient.identification.name.toLowerCase())
-        );
+      this.exams = this.exams.filter((value) => {
+        return value.patientIdentification
+          .toLowerCase()
+          .includes(this.patient.identification.cpf.toLowerCase());
       });
     });
 
     this.service.listAppointments().subscribe((appointment) => {
       this.appointments = appointment;
 
-      this.filteredAppointments = this.appointments.filter((value) => {
-        return (
-          value.patientIdentification
-            .toLowerCase()
-            .includes(this.patient.identification.cpf.toLowerCase()) &&
-          value.patientName
-            .toLowerCase()
-            .includes(this.patient.identification.name.toLowerCase())
-        );
+      this.appointments = this.appointments.filter((value) => {
+        return value.patientIdentification
+          .toLowerCase()
+          .includes(this.patient.identification.cpf.toLowerCase());
       });
     });
   }

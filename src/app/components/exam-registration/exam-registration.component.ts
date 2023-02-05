@@ -52,6 +52,7 @@ export class ExamRegistrationComponent implements OnInit {
     id: 0,
     patientIdentification: '',
     patientName: '',
+    doctorName: '',
     name: '',
     date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     time: formatDate(new Date(), 'H:mm:ss', 'en'),
@@ -216,6 +217,10 @@ export class ExamRegistrationComponent implements OnInit {
     }
     this.exam.patientIdentification = this.patient.identification.cpf;
     this.exam.patientName = this.patient.identification.name;
+
+    let doctorName = localStorage.getItem('user');
+    this.exam.doctorName = JSON.parse(doctorName!);
+
     this.service.createExam(this.exam).subscribe(() => {
       localStorage.setItem(
         'session',

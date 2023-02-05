@@ -14,6 +14,7 @@ export class ExamsActionsComponent {
     id: 0,
     patientIdentification: '',
     patientName: '',
+    doctorName: '',
     name: '',
     date: '',
     time: '',
@@ -156,6 +157,10 @@ export class ExamsActionsComponent {
       });
       return;
     }
+
+    let doctorName = localStorage.getItem('user');
+    this.exam.doctorName = JSON.parse(doctorName!);
+    
     this.service.editExams(this.exam).subscribe(() => {
       localStorage.setItem('session', JSON.stringify('Listagem de Exames'));
       Swal.fire({

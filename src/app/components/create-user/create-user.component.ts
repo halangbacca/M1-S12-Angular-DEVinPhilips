@@ -110,10 +110,10 @@ export class CreateUserComponent {
     this.service.createUser(this.user).subscribe(() => {
       Swal.fire({
         icon: 'success',
-        title: 'Bem-Vindo(a)!',
-        text: 'Usuário cadastrado com sucesso!',
+        title: 'Cadastro efetuado!',
+        text: 'Realize o login para continuar!',
       });
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     });
   }
 }

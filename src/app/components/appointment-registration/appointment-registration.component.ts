@@ -52,6 +52,7 @@ export class AppointmentRegistrationComponent implements OnInit {
     id: 0,
     patientIdentification: '',
     patientName: '',
+    doctorName: '',
     motive: '',
     date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     time: formatDate(new Date(), 'H:mm:ss', 'en'),
@@ -192,6 +193,10 @@ export class AppointmentRegistrationComponent implements OnInit {
     }
     this.appointment.patientIdentification = this.patient.identification.cpf;
     this.appointment.patientName = this.patient.identification.name;
+
+    let doctorName = localStorage.getItem('user');
+    this.appointment.doctorName = JSON.parse(doctorName!);
+
     this.service.createAppointment(this.appointment).subscribe(() => {
       localStorage.setItem('session', JSON.stringify('Cadastro de Exames'));
       Swal.fire({
